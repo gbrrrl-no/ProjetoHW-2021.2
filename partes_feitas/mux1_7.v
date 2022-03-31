@@ -19,7 +19,7 @@ module mux1_7 (
             3'b100: data_out = data_4;
             3'b101: data_out = data_5;
             3'b101: data_out = data_6;
-            defalt: data_out = data_0;    
+            default: data_out = data_0;    
     end
     
 endmodule
