@@ -13,7 +13,8 @@ module mux2_5 (
             3'b010: data_out = data_2;
             3'b011: data_out = 32'd29;
             3'b100: data_out = 32'd31;
-            default: data_out = data_0;    
+            default: data_out = data_0; 
+        endcase   
     end
     
 endmodule

@@ -12,7 +12,8 @@ module mux8_4 (
             3'b001: data_out = 6'd16;
             3'b010: data_out = data_2;
             3'b011: data_out = data_3;
-            default: data_out = data_0;    
+            default: data_out = data_0; 
+        endcase   
     end
     
 endmodule

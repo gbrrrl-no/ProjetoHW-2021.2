@@ -276,11 +276,9 @@ module cpu1 (
         mux13_data_3,
         mux13_data_4,
         PC_in
-    )
+    );
 
     ctrl_unit CTRL_(
-        // no meu vscode essa declaração
-        // não tem syntax highlighting -> possível problema!
         clk,
         reset,
         Overflow,

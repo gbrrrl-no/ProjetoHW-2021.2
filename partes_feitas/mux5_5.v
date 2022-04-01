@@ -14,7 +14,8 @@ module mux5_5 (
             3'b010: data_out = data_2;
             3'b011: data_out = data_3;
             3'b100: data_out = data_4;
-            default: data_out = data_0;    
+            default: data_out = data_0; 
+        endcase   
     end
     
 endmodule

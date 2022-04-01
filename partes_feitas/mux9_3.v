@@ -12,6 +12,7 @@ module mux9_3 (
             3'b001: data_out = data_1;
             3'b010: data_out = data_2;
             default: data_out = data_0;    
+        endcase
     end
     
 endmodule

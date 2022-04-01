@@ -20,7 +20,8 @@ module mux3_8 (
             3'b101: data_out = data_5;
             3'b101: data_out = data_6;
             3'b101: data_out = 32'd227;
-            default: data_out = data_0;    
+            default: data_out = data_0;
+        endcase    
     end
     
 endmodule

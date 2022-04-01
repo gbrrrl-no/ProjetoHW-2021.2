@@ -9,7 +9,8 @@ module mux12_2 (
         case(selector)
             3'b000: data_out = data_0;
             3'b001: data_out = data_1;
-            default: data_out = data_0;    
+            default: data_out = data_0;  
+        endcase  
     end
     
 endmodule

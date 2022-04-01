@@ -44,6 +44,7 @@ reg [2:0] state;
     parameter st_common = 2'b00;
     parameter st_reset = 2'b11;
     // opcode aliases
+    parameter st_and = 5'b00000;
 
 initial begin
     res_out = 1'b1;
