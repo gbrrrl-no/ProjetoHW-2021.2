@@ -3,58 +3,58 @@ module cpu1 (
     input wire reset
 );
     
-// PC
-// controle
+    // PC
+    // controle
     wire PC_w;
-//dados
+    // dados
     wire [31:0] PC_in;
-//saida
+    // saida
     wire [31:0] PC_out;
 
-// mux numero 1
-// controle
+    // mux numero 1
+    // controle
     wire [2:0] mux1_s
-//dados
+    // dados
     wire [31:0] mux1_data_1,
     wire [31:0] mux1_data_2,
     wire [31:0] mux1_data_3,
     wire [31:0] mux1_data_4,
     wire [31:0] mux1_data_5,
     wire [31:0] mux1_data_6,
-//saida
+    // saida
     wire [31:0] mux1_out,
 
-//memory mendata
-//controle
+    // memory mendata
+    // controle
     wire memoria_w;
-//dados
+    // dados
     wire memoria_out;
     wire memoria_in;
-//saida
+    // saida
     wire memoria_out;
 
-//ir
-//controle 
+    // ir
+    // controle 
     wire IR_control; 
-//dados
+    // dados
 
-//saida
+    // saida
     wire [31:26] opcode
     wire [25:21] rs
     wire [20:16] rt
     wire [15:0]  address 
 
-//mux 2
-//controle 
+    // mux 2
+    // controle 
     wire [2:0] mux2_s;
-//dados
-//saida
+    // dados
+    // saida
     wire [31:0] register_to_write;
 
-//mux 3
-//controle
+    // mux 3
+    // controle
     wire [2:0] mux3_s;
-//dados
+    // dados
     wire [4:0] mux3_data_0;
     wire [4:0] ALUOut_out;
     wire [4:0] mux3_data_2;
@@ -62,71 +62,71 @@ module cpu1 (
     wire [4:0] mux3_data_4;
     wire [4:0] mux3_data_5;
     wire [4:0] mux3_data_6;
-//saida
+    // saida
     wire [31:0] write_data;
 
-//Banco de registradores 
-//controle 
-//dados
-//saida
+    // Banco de registradores 
+    // controle 
+    // dados
+    // saida
     wire [31:0] res_out_a;
     wire [31:0] res_out_b;
     wire reg_w;
 
-//Reg A 
-//controle
+    // Reg A 
+    // controle
     wire a_w;
-//saida
+    // saida
     wire [31:0] out_a;
 
-//Reg A 
-//controle
+    // Reg A 
+    // controle
     wire b_w;
-//saida
+    // saida
     wire [31:0] out_b;
 
-//mux 4
-//controle
+    // mux 4
+    // controle
     wire [2:0] mux4_s;
-//dados
+    // dados
     wire [31:0] mux4_data_2;
-//saida
+    // saida
     wire [31:0] out_mux4;
 
-//Sign_extend
-//controle
-//dados
-//saida
+    // Sign_extend
+    // controle
+    // dados
+    // saida
     wire [31:0] address_extended;
 
-//Shift left 2
-//controle
-//dados
-//saida
+    // Shift left 2
+    // controle
+    // dados
+    // saida
     wire [31:0] address_shifited;
 
-//mux 5
-//controle
+    // mux 5
+    // controle
     wire [2:0] mux5_s;
-//dados
+    // dados
     wire [4:0] mux5_data_4;
-//saida
+    // saida
     wire [31:0] out_mux5;
 
-//ula
-//controle
+    // ula
+    // controle
     wire [2:0] ula_selector;
-//saidas   
+    // saidas   
     wire [31:0] S;
     wire Overflow;
     wire Negativo;
-    wire z;
+    wire Zero;
     wire Igual;
     wire Maior;
     wire Menor;
 
-//mux13
-//controle
+    // mux13
+    // controle
     wire ALUOut_w;
 
 
@@ -176,7 +176,7 @@ module cpu1 (
         mux2_s,
         rs,
         rt,
-        address[15:11],//tem que ver se isso funciona mesmo
+        address[15:11], // tem que ver se isso funciona mesmo
         register_to_write
     );
 
@@ -254,7 +254,7 @@ module cpu1 (
         S,
         Overflow,
         Negativo,
-        z,
+        Zero,
         Igual,
         Maior,
         Menor
@@ -277,5 +277,32 @@ module cpu1 (
         mux13_data_4,
         PC_in
     )
+
+    ctrl_unit CTRL_(
+        // no meu vscode essa declaração
+        // não tem syntax highlighting -> possível problema!
+        clk,
+        reset,
+        Overflow,
+        Negativo,
+        Zero,
+        Igual,
+        Maior,
+        Menor,
+        opcode,
+        PC_w,
+        memoria_w,
+        IR_control,
+        a_w,
+        b_w,
+        ula_selector,
+        mux1_s,
+        mux2_s,
+        mux3_s,
+        mux4_s,
+        mux5_s,
+        mux13_s,
+        reset
+    );
 
 endmodule
