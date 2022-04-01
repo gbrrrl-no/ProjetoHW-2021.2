@@ -85,7 +85,6 @@ module cpu1 (
         // controle
         wire memoria_w;
         // dados
-        wire memoria_out;
         wire memoria_in;
         // saida
         wire memoria_out;
@@ -328,6 +327,8 @@ module cpu1 (
         mem_dr_w,
         load_dec_w,
         reg_des_shift,
+        ALUOut_w,
+        reg_w,
         reset
     );
 
