@@ -46,7 +46,7 @@ reg [2:0] state;
     // opcode aliases
 
 initial begin
-    res_out = 1'ba;
+    res_out = 1'b1;
 end
 
 always @(posedge clk) begin
@@ -61,13 +61,13 @@ always @(posedge clk) begin
             b_w = 1'b0; //ok
             ALUOut_w = 1'b0; //ok
             ula_selector = 3'b000; //ok
-            reset_out = 1'b1; ///
             mux1_s = 2'b000;
             mux2_s = 2'b000;
             mux3_s = 2'b000;
             mux4_s = 2'b000;
             mux5_s = 2'b000;
             mux13_s = 2'b000;
+            reset_out = 1'b1; ///
 
             counter = 3'b0000;
         end
@@ -81,13 +81,13 @@ always @(posedge clk) begin
             b_w = 1'b0;
             ALUOut_w = 1'b0;
             ula_selector = 3'b000;
-            reset_out = 1'b0; ///
             mux1_s = 2'b000;
             mux2_s = 2'b000;
             mux3_s = 2'b000;
             mux4_s = 2'b000;
             mux5_s = 2'b000;
             mux13_s = 2'b000;
+            reset_out = 1'b0; ///
                        
             counter = 3'b0000;
         end
@@ -114,7 +114,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b001; ///
                     mux13_s = 2'b000;  
 
-                    counter = 3'b0000;                
+                    counter = counter + 1;                
                 end
                 else if(counter == 3'b0011) begin
                     state = st_common;
@@ -135,7 +135,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b001; 
                     mux13_s = 2'b000;  
 
-                    counter = 3'b0000;   
+                    counter = counter + 1;   
                 end    
                 else if(counter == 3'b0100) begin
                     state = st_common;
@@ -156,7 +156,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b001; 
                     mux13_s = 2'b001;  
 
-                    counter = 3'b0000;   
+                    counter = counter + 1;   
                 end     
                 else if(counter == 3'b0101) begin
                     state = st_common;
@@ -177,7 +177,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b001; 
                     mux13_s = 2'b001;  
 
-                    counter = 3'b0000;   
+                    counter = counter + 1;   
                 end   
                 else if(counter == 3'b0110 || counter == 3'b0111 || counter == 3'b1000) begin
                     state = st_common;
@@ -198,7 +198,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b011; ///
                     mux13_s = 2'b001;  
 
-                    counter = 3'b0000;   
+                    counter = counter + 1;   
                 end  
                 else if(counter == 3'b1001) begin 
                     state = st_common;
@@ -219,7 +219,7 @@ always @(posedge clk) begin
                     mux5_s = 2'b011; 
                     mux13_s = 2'b001;  
 
-                    counter = 3'b0000;   
+                    counter = counter + 1;   
                 end         
             end
         endcase
