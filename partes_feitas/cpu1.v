@@ -72,6 +72,14 @@ module cpu1 (
         wire [2:0] mux9_s;
         wire [2:0] mux10_s;
         wire [2:0] mux12_s;
+        wire temp_a_s;
+        wire temp_b_s;
+        wire hi_out_s;
+        wire lo_out_s;
+        wire EPC_w;
+        wire mem_dr_w;
+        wire load_dec_w;
+        wire reg_des_shift;
 
     // memory mendata
         // controle

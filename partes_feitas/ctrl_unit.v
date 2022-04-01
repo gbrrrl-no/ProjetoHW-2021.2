@@ -37,6 +37,14 @@ module ctrl_unit (
     output reg                [2:0] mux10_s,
     output reg                [2:0] mux12_s,
     output reg                [2:0] mux13_s,
+    output reg                temp_a_s,
+    output reg                temp_b_s,
+    output reg                hi_out_s,
+    output reg                lo_out_s,
+    output reg                EPC_w,
+    output reg                mem_dr_w,
+    output reg                load_dec_w,
+    output reg                reg_des_shift,
 
     // special controller for reset instruction
     output reg                reset_out,
