@@ -11,6 +11,7 @@ module ctrl_unit (
     input wire                Menor,
 
     // meaningful part of the instruction
+    input wire                [5:0] funct,
     input wire                [5:0] opcode,
 
     // controllers with 1 bit
@@ -29,10 +30,16 @@ module ctrl_unit (
     output reg                [2:0] mux3_s,
     output reg                [2:0] mux4_s,
     output reg                [2:0] mux5_s,
+    output reg                [2:0] mux6_s,
+    output reg                [2:0] mux7_s,
+    output reg                [2:0] mux8_s,
+    output reg                [2:0] mux9_s,
+    output reg                [2:0] mux10_s,
+    output reg                [2:0] mux12_s,
     output reg                [2:0] mux13_s,
 
     // special controller for reset instruction
-    output reg                res_out,
+    output reg                reset_out,
 );
 
 // variables
@@ -43,11 +50,14 @@ reg [2:0] state;
     // main states
     parameter st_common = 2'b00;
     parameter st_reset = 2'b11;
+    parameter st_end = 6'b000000;
+
     // opcode aliases
-    parameter st_and = 5'b00000;
+    parameter AND = 6'b000000;
+    parameter RESET = 6'b000000;
 
 initial begin
-    res_out = 1'b1;
+    reset_out = 1'b1;
 end
 
 always @(posedge clk) begin

@@ -150,6 +150,52 @@ module cpu1 (
         mux1_out
     );
 
+    mux2_5 mux2(
+        mux2_s,
+        rs,
+        rt,
+        address[15:11], // tem que ver se isso funciona mesmo
+        register_to_write
+    );
+
+    mux3_8 mux3(
+        mux3_s,
+        mux3_data_0,
+        ALUOut_out,
+        mux3_data_2,
+        mux3_data_3,
+        mux3_data_4,
+        mux3_data_5,
+        mux3_data_6,
+        write_data
+    );
+
+    mux4_3 mux4(
+        mux4_s,
+        PC_out,
+        res_out_a,
+        mux4_data_2,
+        out_mux4
+    );
+
+    mux5_5 mux5(
+        mux5_s,
+        out_b,
+        address_extended,
+        address_shifited,
+        mux5_data_4,
+        out_mux5
+    );
+
+    mux13_5 mux13(
+        mux13_s,
+        S,
+        ALUOut_out,
+        mux13_data_2,
+        mux13_data_3,
+        mux13_data_4,
+        PC_in
+    );
 
     Memoria memoria(
         mux1_out,
@@ -169,27 +215,6 @@ module cpu1 (
         rs,
         rt,
         address
-    );
-
-
-    mux2_5 mux2(
-        mux2_s,
-        rs,
-        rt,
-        address[15:11], // tem que ver se isso funciona mesmo
-        register_to_write
-    );
-
-    mux3_8 mux3(
-        mux3_s,
-        mux3_data_0,
-        ALUOut_out,
-        mux3_data_2,
-        mux3_data_3,
-        mux3_data_4,
-        mux3_data_5,
-        mux3_data_6,
-        write_data
     );
 
     Banco_reg register(
@@ -220,14 +245,6 @@ module cpu1 (
         out_b
     );
 
-    mux4_3 mux4(
-        mux4_s,
-        PC_out,
-        res_out_a,
-        mux4_data_2,
-        out_mux4
-    );
-
     Sign_extend_16 se16(
         address,
         address_extended
@@ -236,15 +253,6 @@ module cpu1 (
     shift_left2 sl2(
         address_extended,
         address_shifited
-    );
-
-    mux5_5 mux5(
-        mux5_s,
-        out_b,
-        address_extended,
-        address_shifited,
-        mux5_data_4,
-        out_mux5
     );
 
     ula32 ula(
@@ -268,16 +276,6 @@ module cpu1 (
         ALUOut_out
     );
 
-    mux13_5 mux13(
-        mux13_s,
-        S,
-        ALUOut_out,
-        mux13_data_2,
-        mux13_data_3,
-        mux13_data_4,
-        PC_in
-    );
-
     ctrl_unit CTRL_(
         clk,
         reset,
@@ -287,6 +285,7 @@ module cpu1 (
         Igual,
         Maior,
         Menor,
+        address[5:0],
         opcode,
         PC_w,
         memoria_w,
@@ -299,6 +298,12 @@ module cpu1 (
         mux3_s,
         mux4_s,
         mux5_s,
+        mux6_s,
+        mux7_s,
+        mux8_s,
+        mux9_s,
+        mux10_s,
+        mux12_s,
         mux13_s,
         reset
     );
