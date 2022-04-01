@@ -85,9 +85,23 @@ always @(posedge clk) begin
             mux3_s = 2'b000;
             mux4_s = 2'b000;
             mux5_s = 2'b000;
+            mux6_s = 2'b000;
+            mux7_s = 2'b000;
+            mux8_s = 2'b000;
+            mux9_s = 2'b000;
+            mux10_s = 2'b000;
+            mux12_s = 2'b000;
             mux13_s = 2'b000;
             reset_out = 1'b1; ///
-
+            temp_a_s = 1'b0;
+            temp_b_s = 1'b0;
+            hi_out_s = 1'b0;
+            lo_out_s = 1'b0;
+            EPC_w = 1'b0;
+            mem_dr_w = 1'b0;
+            load_dec_w = 1'b0;
+            reg_des_shift = 1'b0;
+            
             counter = 3'b0000;
         end
         else begin
@@ -105,8 +119,22 @@ always @(posedge clk) begin
             mux3_s = 2'b000;
             mux4_s = 2'b000;
             mux5_s = 2'b000;
+            mux6_s = 2'b000;
+            mux7_s = 2'b000;
+            mux8_s = 2'b000;
+            mux9_s = 2'b000;
+            mux10_s = 2'b000;
+            mux12_s = 2'b000;
             mux13_s = 2'b000;
             reset_out = 1'b0; ///
+            temp_a_s = 1'b0;
+            temp_b_s = 1'b0;
+            hi_out_s = 1'b0;
+            lo_out_s = 1'b0;
+            EPC_w = 1'b0;
+            mem_dr_w = 1'b0;
+            load_dec_w = 1'b0;
+            reg_des_shift = 1'b0;
                        
             counter = 3'b0000;
         end
@@ -131,7 +159,21 @@ always @(posedge clk) begin
                     mux3_s = 2'b000;
                     mux4_s = 2'b000;
                     mux5_s = 2'b001; ///
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000;
                     mux13_s = 2'b000;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;                
                 end
@@ -151,8 +193,22 @@ always @(posedge clk) begin
                     mux2_s = 2'b000;
                     mux3_s = 2'b000;
                     mux4_s = 2'b000;
-                    mux5_s = 2'b001; 
+                    mux5_s = 2'b001;
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000; 
                     mux13_s = 2'b000;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;   
                 end    
@@ -173,7 +229,21 @@ always @(posedge clk) begin
                     mux3_s = 2'b000;
                     mux4_s = 2'b000;
                     mux5_s = 2'b001; 
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000;
                     mux13_s = 2'b001;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;   
                 end     
@@ -194,7 +264,21 @@ always @(posedge clk) begin
                     mux3_s = 2'b000;
                     mux4_s = 2'b000;
                     mux5_s = 2'b001; 
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000;
                     mux13_s = 2'b001;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;   
                 end   
@@ -215,7 +299,21 @@ always @(posedge clk) begin
                     mux3_s = 2'b000;
                     mux4_s = 2'b000; ///
                     mux5_s = 2'b011; ///
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000;
                     mux13_s = 2'b001;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;   
                 end  
@@ -236,7 +334,21 @@ always @(posedge clk) begin
                     mux3_s = 2'b000;
                     mux4_s = 2'b000; 
                     mux5_s = 2'b011; 
+                    mux6_s = 2'b000;
+                    mux7_s = 2'b000;
+                    mux8_s = 2'b000;
+                    mux9_s = 2'b000;
+                    mux10_s = 2'b000;
+                    mux12_s = 2'b000;
                     mux13_s = 2'b001;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
 
                     counter = counter + 1;   
                 end         

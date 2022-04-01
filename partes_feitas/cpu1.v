@@ -320,6 +320,14 @@ module cpu1 (
         mux10_s,
         mux12_s,
         mux13_s,
+        temp_a_s,
+        temp_b_s,
+        hi_out_s,
+        lo_out_s,
+        EPC_w,
+        mem_dr_w,
+        load_dec_w,
+        reg_des_shift,
         reset
     );
 
