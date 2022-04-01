@@ -4,131 +4,138 @@ module cpu1 (
 );
     
     // PC
-    // controle
-    wire PC_w;
-    // dados
-    wire [31:0] PC_in;
-    // saida
-    wire [31:0] PC_out;
+        // controle
+        wire PC_w;
+        // dados
+        wire [31:0] PC_in;
+        // saida
+        wire [31:0] PC_out;
 
-    // mux numero 1
-    // controle
-    wire [2:0] mux1_s
-    // dados
-    wire [31:0] mux1_data_1,
-    wire [31:0] mux1_data_2,
-    wire [31:0] mux1_data_3,
-    wire [31:0] mux1_data_4,
-    wire [31:0] mux1_data_5,
-    wire [31:0] mux1_data_6,
-    // saida
-    wire [31:0] mux1_out,
-
-    // memory mendata
-    // controle
-    wire memoria_w;
-    // dados
-    wire memoria_out;
-    wire memoria_in;
-    // saida
-    wire memoria_out;
-
-    // ir
-    // controle 
-    wire IR_control; 
-    // dados
-
-    // saida
-    wire [31:26] opcode
-    wire [25:21] rs
-    wire [20:16] rt
-    wire [15:0]  address 
+    // mux 1
+        // controle
+        wire [2:0] mux1_s
+        // dados
+        wire [31:0] mux1_data_1,
+        wire [31:0] mux1_data_2,
+        wire [31:0] mux1_data_3,
+        wire [31:0] mux1_data_4,
+        wire [31:0] mux1_data_5,
+        wire [31:0] mux1_data_6,
+        // saida
+        wire [31:0] mux1_out,
 
     // mux 2
-    // controle 
-    wire [2:0] mux2_s;
-    // dados
-    // saida
-    wire [31:0] register_to_write;
+        // controle 
+        wire [2:0] mux2_s;
+        // dados
+        // saida
+        wire [31:0] register_to_write;
 
     // mux 3
-    // controle
-    wire [2:0] mux3_s;
-    // dados
-    wire [4:0] mux3_data_0;
-    wire [4:0] ALUOut_out;
-    wire [4:0] mux3_data_2;
-    wire [4:0] mux3_data_3;
-    wire [4:0] mux3_data_4;
-    wire [4:0] mux3_data_5;
-    wire [4:0] mux3_data_6;
-    // saida
-    wire [31:0] write_data;
-
-    // Banco de registradores 
-    // controle 
-    // dados
-    // saida
-    wire [31:0] res_out_a;
-    wire [31:0] res_out_b;
-    wire reg_w;
-
-    // Reg A 
-    // controle
-    wire a_w;
-    // saida
-    wire [31:0] out_a;
-
-    // Reg A 
-    // controle
-    wire b_w;
-    // saida
-    wire [31:0] out_b;
+        // controle
+        wire [2:0] mux3_s;
+        // dados
+        wire [4:0] mux3_data_0;
+        wire [4:0] ALUOut_out;
+        wire [4:0] mux3_data_2;
+        wire [4:0] mux3_data_3;
+        wire [4:0] mux3_data_4;
+        wire [4:0] mux3_data_5;
+        wire [4:0] mux3_data_6;
+        // saida
+        wire [31:0] write_data;
 
     // mux 4
-    // controle
-    wire [2:0] mux4_s;
-    // dados
-    wire [31:0] mux4_data_2;
-    // saida
-    wire [31:0] out_mux4;
-
-    // Sign_extend
-    // controle
-    // dados
-    // saida
-    wire [31:0] address_extended;
-
-    // Shift left 2
-    // controle
-    // dados
-    // saida
-    wire [31:0] address_shifited;
+        // controle
+        wire [2:0] mux4_s;
+        // dados
+        wire [31:0] mux4_data_2;
+        // saida
+        wire [31:0] out_mux4;
 
     // mux 5
-    // controle
-    wire [2:0] mux5_s;
-    // dados
-    wire [4:0] mux5_data_4;
+        // controle
+        wire [2:0] mux5_s;
+        // dados
+        wire [4:0] mux5_data_4;
+        // saida
+        wire [31:0] out_mux5;
+
+    // mux 13
+        // controle
+        wire ALUOut_w;
+
+    // unused muxes
+        wire [2:0] mux6_s;
+        wire [2:0] mux7_s;
+        wire [2:0] mux8_s;
+        wire [2:0] mux9_s;
+        wire [2:0] mux10_s;
+        wire [2:0] mux12_s;
+
+    // memory mendata
+        // controle
+        wire memoria_w;
+        // dados
+        wire memoria_out;
+        wire memoria_in;
+        // saida
+        wire memoria_out;
+
+    // ir
+        // controle 
+        wire IR_control; 
+        // dados
+
     // saida
-    wire [31:0] out_mux5;
+        wire [31:26] opcode
+        wire [25:21] rs
+        wire [20:16] rt
+        wire [15:0]  address 
+
+    // Banco de registradores 
+        // controle 
+        // dados
+        // saida
+        wire [31:0] res_out_a;
+        wire [31:0] res_out_b;
+        wire reg_w;
+
+    // Reg A 
+        // controle
+        wire a_w;
+        // saida
+        wire [31:0] out_a;
+
+    // Reg A 
+        // controle
+        wire b_w;
+        // saida
+        wire [31:0] out_b;
+
+    // Sign_extend
+        // controle
+        // dados
+        // saida
+        wire [31:0] address_extended;
+
+    // Shift left 2
+        // controle
+        // dados
+        // saida
+        wire [31:0] address_shifited;
 
     // ula
-    // controle
-    wire [2:0] ula_selector;
-    // saidas   
-    wire [31:0] S;
-    wire Overflow;
-    wire Negativo;
-    wire Zero;
-    wire Igual;
-    wire Maior;
-    wire Menor;
-
-    // mux13
-    // controle
-    wire ALUOut_w;
-
+        // controle
+        wire [2:0] ula_selector;
+        // saidas   
+        wire [31:0] S;
+        wire Overflow;
+        wire Negativo;
+        wire Zero;
+        wire Igual;
+        wire Maior;
+        wire Menor;
 
     Registrador PC_(
         clk,
