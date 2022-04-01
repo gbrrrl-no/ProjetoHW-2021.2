@@ -50,7 +50,7 @@ module ctrl_unit (
 
 
     // special controller for reset instruction
-    output reg                reset_out,
+    output reg                reset_out
 );
 
 // variables

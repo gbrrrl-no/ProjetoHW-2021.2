@@ -3,7 +3,7 @@ module mux8_4 (
     input wire [5:0] data_0,
     input wire [5:0] data_2,
     input wire [5:0] data_3,
-    output wire [5:0] data_out,
+    output wire [5:0] data_out
 );
 
     always @(selector) begin

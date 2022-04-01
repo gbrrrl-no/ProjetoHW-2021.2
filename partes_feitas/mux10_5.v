@@ -5,7 +5,7 @@ module mux5_5 (
     input wire [31:0] data_2,
     input wire [31:0] data_3,
     input wire [31:0] data_4,
-    output wire [31:0] data_out,
+    output wire [31:0] data_out
 );
 
     always @(selector) begin

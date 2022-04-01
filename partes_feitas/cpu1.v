@@ -13,16 +13,16 @@ module cpu1 (
 
     // mux 1
         // controle
-        wire [2:0] mux1_s
+        wire [2:0] mux1_s;
         // dados
-        wire [31:0] mux1_data_1,
-        wire [31:0] mux1_data_2,
-        wire [31:0] mux1_data_3,
-        wire [31:0] mux1_data_4,
-        wire [31:0] mux1_data_5,
-        wire [31:0] mux1_data_6,
+        wire [31:0] mux1_data_1;
+        wire [31:0] mux1_data_2;
+        wire [31:0] mux1_data_3;
+        wire [31:0] mux1_data_4;
+        wire [31:0] mux1_data_5;
+        wire [31:0] mux1_data_6;
         // saida
-        wire [31:0] mux1_out,
+        wire [31:0] mux1_out;
 
     // mux 2
         // controle 
@@ -95,10 +95,10 @@ module cpu1 (
         // dados
 
     // saida
-        wire [31:26] opcode
-        wire [25:21] rs
-        wire [20:16] rt
-        wire [15:0]  address 
+        wire [31:26] opcode;
+        wire [25:21] rs;
+        wire [20:16] rt;
+        wire [15:0]  address; 
 
     // Banco de registradores 
         // controle 

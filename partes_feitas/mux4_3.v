@@ -3,7 +3,7 @@ module mux4_3 (
     input wire [31:0] data_0,
     input wire [31:0] data_1,
     input wire [31:0] data_2,
-    output wire [31:0] data_out,
+    output wire [31:0] data_out
 );
 
     always @(selector) begin
