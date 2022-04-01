@@ -7,12 +7,17 @@ module cpu_add (
 
     wire PC_w;
     wire MEM_w;
+    wire IR_w;
 
 // Data wires
 
     wire [31:0] ULA_out;
     wire [31:0] PC_out;
     wire [31:0] MEM_to_IR;
+    wire [5:0] OPCODE;
+    wire [4:0] RS;
+    wire [4:0] RT;
+    wire [15:0] OFFSET;
 
     Registrador PC_(
         clk,
@@ -40,5 +45,11 @@ module cpu_add (
         RT,
         OFFSET
     );
+
+    mux_3_8 M_WREG_(
+
+    );
+
+    // Banco_reg 
     
 endmodule
