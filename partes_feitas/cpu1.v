@@ -22,7 +22,7 @@ module cpu1 (
         wire [31:0] mux1_data_5;
         wire [31:0] mux1_data_6;
         // saida
-        wire [31:0] mux1_out;
+        wire [31:0] out_mux1;
 
     // mux 2
         // controle 
@@ -95,8 +95,8 @@ module cpu1 (
 
     // Memory dada register
 
-        wire mds_w;
-        wire [31:0] mds_out;
+        wire mdr_w;
+        wire [31:0] mdr_out;
     
     // Temp a e b
 
@@ -178,13 +178,13 @@ module cpu1 (
     mux1_7 mux1(
         mux1_s,
         PC_out,
-        mux1_data_1,
+        ALUOut_out,
         mux1_data_2,
         mux1_data_3,
         mux1_data_4,
         mux1_data_5,
         mux1_data_6,
-        mux1_out
+        out_mux1
     );
 
     mux2_5 mux2(
@@ -201,8 +201,8 @@ module cpu1 (
         ALUOut_out,
         mux3_data_2,
         mux3_data_3,
-        mux3_data_4,
-        mux3_data_5,
+        out_mux12,
+        sh_out,
         sign_extended7,
         write_data
     );
@@ -210,7 +210,7 @@ module cpu1 (
     mux4_3 mux4(
         mux4_s,
         PC_out,
-        res_out_a,
+        out_a,
         temp_a_out,
         out_mux4
     );
@@ -223,15 +223,52 @@ module cpu1 (
         temp_b_out,
         out_mux5
     );
+
+    mux6_2 mux6(
+        mux6_s,
+        out_a,
+        out_b,
+        out_mux6
+    );
+
+    mux7_2 mux7(
+        mux7_s,
+        out_a,
+        out_b,
+        out_mux7
+    );
+
+    mux8_4 mux8(
+        mux8_s,
+        out_b[4:0],
+        address[10:6],
+        mdr_out[4:0],
+        out_mux8
+    );
+
+    mux9_3 mux9(
+        mux9_s,
+        out_a,
+        sign_extended1,
+        out_b,
+        out_mux9
+    );
     
     mux10_5 mux10(
         mux10_s,
         sb_out,
         sh_out,
-        res_out_b,
+        out_b,
         sign_extended2,
         sign_extended4,
         memoria_in
+    );
+
+    mux12_2 mux12(
+        mux12_s,
+        sign_extended3,
+        sign_extended5,
+        out_mux12
     );
 
     mux13_5 mux13(
@@ -245,19 +282,19 @@ module cpu1 (
     );
 
     SB sb(
-        res_out_b[7:0],
-        mds_out[31:8],
+        out_b[7:0],
+        mdr_out[31:8],
         sb_out
     );
 
     SH sh(
-        res_out_b[15:0],
-        mds_out[31:16],
+        out_b[15:0],
+        mdr_out[31:16],
         sh_out
     );
 
     Memoria memoria(
-        mux1_out,
+        out_mux1,
         clk,
         memoria_w,
         memoria_in,
@@ -267,16 +304,16 @@ module cpu1 (
     Registrador mem_d_s(
         clk,
         reset,
-        mds_w,
+        mdr_w,
         memoria_out,
-        mds_out
+        mdr_out
     );
 
     Registrador temp_a(
         clk,
         reset,
         temp_a_s,
-        mds_out,
+        mdr_out,
         temp_a_out
     );
     
@@ -284,7 +321,7 @@ module cpu1 (
         clk,
         reset,
         temp_b_s,
-        mds_out,
+        mdr_out,
         temp_b_out
     );
 
@@ -339,7 +376,7 @@ module cpu1 (
     );
 
     Sign_extend_16 se16_3(
-        mds_out[15:0],
+        mdr_out[15:0],
         sign_extended3
     );
 
@@ -349,7 +386,7 @@ module cpu1 (
     );
 
     Sign_extend_8 se8_2(
-        mds_out[7:0],
+        mdr_out[7:0],
         sign_extended5
     );
 
@@ -423,7 +460,7 @@ module cpu1 (
         hi_out_s,
         lo_out_s,
         EPC_w,
-        mds_w,
+        mdr_w,
         load_dec_w,
         reg_des_shift,
         ALUOut_w,
