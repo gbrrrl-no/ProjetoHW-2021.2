@@ -365,10 +365,8 @@ always @(posedge clk) begin
                                 AND: begin
                                     state = st_and;
                                 end
-                                default:
                             endcase
                         end
-                        default:
                     endcase
                     PC_w = 1'b0;  //ok
                     memoria_w = 1'b0; //ok
