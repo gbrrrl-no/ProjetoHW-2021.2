@@ -57,9 +57,38 @@ module cpu1 (
         // saida
         wire [31:0] out_mux5;
 
+    // mux 6
+        // controle
+        wire [2:0] mux6_s;
+        // saida
+        wire [31:0] out_mux6;
+
+    // mux 7
+        // controle
+        wire [2:0] mux7_s;
+        // saida
+        wire [31:0] out_mux7;
+
+    // mux 8
+        // controle
+        wire [2:0] mux8_s;
+        // saida
+        wire [4:0] out_mux8;
+
+    // mux 9
+        // controle
+        wire [2:0] mux9_s;
+        // saida
+        wire [31:0] out_mux9;
+
     // mux 10
          
         wire [2:0] mux10_s;
+
+    // mux 12
+         
+        wire [2:0] mux12_s;
+        wire [31:0] out_mux12;
 
     // mux 13
         // controle
@@ -68,12 +97,7 @@ module cpu1 (
         wire [31:0] mux13_data_3;
         wire [31:0] mux13_data_4;
 
-    // unused muxes
-        wire [2:0] mux6_s;
-        wire [2:0] mux7_s;
-        wire [2:0] mux8_s;
-        wire [2:0] mux9_s;
-        wire [2:0] mux12_s;
+    // unused
         wire hi_out_s;
         wire lo_out_s;
         wire EPC_w;
