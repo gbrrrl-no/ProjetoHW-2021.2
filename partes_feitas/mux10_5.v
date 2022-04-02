@@ -1,4 +1,4 @@
-module mux5_5 (
+module mux10_5 (
     input wire [2:0] selector,
     input wire [31:0] data_0,
     input wire [31:0] data_1,

@@ -29,19 +29,19 @@ module cpu1 (
         wire [2:0] mux2_s;
         // dados
         // saida
-        wire [31:0] register_to_write;
+        wire [4:0] register_to_write;
 
     // mux 3
         // controle
         wire [2:0] mux3_s;
         // dados
-        wire [4:0] mux3_data_0;
-        wire [4:0] ALUOut_out;
-        wire [4:0] mux3_data_2;
-        wire [4:0] mux3_data_3;
-        wire [4:0] mux3_data_4;
-        wire [4:0] mux3_data_5;
-        wire [4:0] mux3_data_6;
+        wire [31:0] mux3_data_0;
+        wire [31:0] ALUOut_out;
+        wire [31:0] mux3_data_2;
+        wire [31:0] mux3_data_3;
+        wire [31:0] mux3_data_4;
+        wire [31:0] mux3_data_5;
+        wire [31:0] mux3_data_6;
         // saida
         wire [31:0] write_data;
 
@@ -57,13 +57,16 @@ module cpu1 (
         // controle
         wire [2:0] mux5_s;
         // dados
-        wire [4:0] mux5_data_4;
+        wire [31:0] mux5_data_4;
         // saida
         wire [31:0] out_mux5;
 
     // mux 13
         // controle
-        wire ALUOut_w;
+        wire [2:0] mux13_s;
+        wire [31:0] mux13_data_2;
+        wire [31:0] mux13_data_3;
+        wire [31:0] mux13_data_4;
 
     // unused muxes
         wire [2:0] mux6_s;
@@ -85,9 +88,9 @@ module cpu1 (
         // controle
         wire memoria_w;
         // dados
-        wire memoria_in;
+        wire [31:0] memoria_in;
         // saida
-        wire memoria_out;
+        wire [31:0] memoria_out;
 
     // ir
         // controle 
@@ -107,6 +110,7 @@ module cpu1 (
         wire [31:0] res_out_a;
         wire [31:0] res_out_b;
         wire reg_w;
+        wire ALUOut_w;
 
     // Reg A 
         // controle
@@ -216,7 +220,7 @@ module cpu1 (
         clk,
         memoria_w,
         memoria_out,
-        memoria_in,
+        memoria_in
     );
 
 
