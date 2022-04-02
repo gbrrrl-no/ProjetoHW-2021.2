@@ -55,20 +55,23 @@ module ctrl_unit (
 
 // variables
 reg [3:0] counter;
-reg [2:0] state;
+reg [5:0] state;
 
 // parameters
     // main states
     parameter st_common = 2'b00;
     parameter st_reset = 2'b11;
-    parameter st_and = 6'b000000;
-    parameter st_add = 6'b000000;
-    parameter st_over_f = 6'b000000;
 
     // opcode aliases
     parameter AND = 6'b000000;
-    parameter RESET = 6'b000000;
+    parameter RESET = 6'b000001;
     parameter ADD = 6'b000000;
+
+    //funct aliases
+    parameter fct_and = 6'b011000;
+    parameter fct_add = 6'b100000;
+    parameter fct_over_f = 6'b000000;
+
 
 initial begin
     reset_out = 1'b1;
@@ -365,11 +368,11 @@ always @(posedge clk) begin
                         end
                         6'b000000: begin
                             case (funct)
-                                AND: begin
-                                    state = st_and;
+                                fct_and: begin
+                                    state = fct_and;
                                 end
                                 ADD: begin
-                                    state = st_add;
+                                    state = fct_add;
                                 end
                             endcase
                         end
@@ -407,9 +410,10 @@ always @(posedge clk) begin
                     counter = 4'b0000;
                 end
             end
-            st_and: begin
+            //================= and =======================
+            fct_and: begin
                 if (counter == 4'b0000 || counter == 4'b0001 || counter == 4'b0010) begin
-                    state = st_and;
+                    state = fct_and;
                     
                     PC_w = 1'b0; 
                     memoria_w = 1'b0;
@@ -479,9 +483,10 @@ always @(posedge clk) begin
                     counter = 4'b0000;   
                 end
             end
-            st_add: begin
+            //================= add =======================
+            fct_add: begin
                 if (counter == 4'b0000) begin
-                    state = st_add;
+                    state = fct_add;
                     
                     PC_w = 1'b0; 
                     memoria_w = 1'b0;
@@ -516,7 +521,7 @@ always @(posedge clk) begin
                     counter = counter + 1;   
                 end
                 else if (counter == 4'b0001 && Overflow) begin
-                    state = st_over_f;
+                    state = fct_over_f;
                     counter = 4'b000;
                 end
                 else if (counter == 4'b0001) begin
@@ -555,9 +560,10 @@ always @(posedge clk) begin
                     counter = 4'b0000;   
                 end
             end
-            st_over_f: begin
+            //================= overflow ==================
+            fct_over_f: begin
                 if (counter == 4'b0000) begin
-                    state = st_over_f;
+                    state = fct_over_f;
                     
                     PC_w = 1'b0; 
                     memoria_w = 1'b0;
@@ -592,7 +598,7 @@ always @(posedge clk) begin
                     counter = counter + 1;   
                 end
                 else if (counter == 4'b0001) begin
-                    state = st_over_f;
+                    state = fct_over_f;
                     
                     PC_w = 1'b0; 
                     memoria_w = 1'b0;
@@ -627,7 +633,7 @@ always @(posedge clk) begin
                     counter = counter + 1;   
                 end
                 else if (counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
-                    state = st_over_f;
+                    state = fct_over_f;
                     
                     PC_w = 1'b1; 
                     memoria_w = 1'b0;
@@ -697,6 +703,7 @@ always @(posedge clk) begin
                     counter = 4'b0000;   
                 end
             end
+            //================= reset =====================
             st_reset: begin
                 if (counter == 4'b0001) begin
                     state = st_common;

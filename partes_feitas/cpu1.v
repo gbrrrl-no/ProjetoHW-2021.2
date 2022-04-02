@@ -219,8 +219,8 @@ module cpu1 (
         mux1_out,
         clk,
         memoria_w,
-        memoria_out,
-        memoria_in
+        memoria_in,
+        memoria_out
     );
 
 
