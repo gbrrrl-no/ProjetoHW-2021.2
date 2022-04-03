@@ -35,8 +35,10 @@ module ctrl_unit (
     output reg                [2:0] mux8_s,
     output reg                [2:0] mux9_s,
     output reg                [2:0] mux10_s,
+    output reg                [2:0] mux11_s,
     output reg                [2:0] mux12_s,
     output reg                [2:0] mux13_s,
+    output reg                [2:0] mux14_s,
     output reg                temp_a_s,
     output reg                temp_b_s,
     output reg                hi_out_s,
@@ -101,6 +103,8 @@ always @(posedge clk) begin
             mux10_s = 3'b000;
             mux12_s = 3'b000;
             mux13_s = 3'b000;
+            mux11_s = 3'b000;
+            mux14_s = 3'b000;
             reset_out = 1'b1; ///
             temp_a_s = 1'b0;
             temp_b_s = 1'b0;
@@ -135,6 +139,8 @@ always @(posedge clk) begin
             mux10_s = 3'b000;
             mux12_s = 3'b000;
             mux13_s = 3'b000;
+            mux11_s = 3'b000;
+            mux14_s = 3'b000;
             reset_out = 1'b0; ///
             temp_a_s = 1'b0;
             temp_b_s = 1'b0;
@@ -174,7 +180,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -209,7 +217,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000; 
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -244,7 +254,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b001;  
+                    mux13_s = 3'b001;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -279,7 +291,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b001;  
+                    mux13_s = 3'b001;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -314,7 +328,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -349,7 +365,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -397,6 +415,8 @@ always @(posedge clk) begin
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
                     mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
                     reset_out = 1'b0; ///
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
@@ -435,7 +455,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -470,7 +492,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -508,7 +532,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -547,7 +573,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -585,7 +613,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -620,7 +650,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -655,7 +687,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -689,7 +723,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b100;  
+                    mux13_s = 3'b100;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -728,7 +764,9 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;  
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;

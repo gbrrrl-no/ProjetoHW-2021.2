@@ -15,12 +15,9 @@ module cpu1 (
         // controle
         wire [2:0] mux1_s;
         // dados
-        wire [31:0] mux1_data_1;
         wire [31:0] mux1_data_2;
         wire [31:0] mux1_data_3;
         wire [31:0] mux1_data_4;
-        wire [31:0] mux1_data_5;
-        wire [31:0] mux1_data_6;
         // saida
         wire [31:0] out_mux1;
 
@@ -37,11 +34,6 @@ module cpu1 (
         // dados
         wire [31:0] mux3_data_0;
         wire [31:0] ALUOut_out;
-        wire [31:0] mux3_data_2;
-        wire [31:0] mux3_data_3;
-        wire [31:0] mux3_data_4;
-        wire [31:0] mux3_data_5;
-        wire [31:0] mux3_data_6;
         // saida
         wire [31:0] write_data;
 
@@ -85,6 +77,12 @@ module cpu1 (
          
         wire [2:0] mux10_s;
 
+    // mux 11
+         
+        wire [2:0] mux11_s;
+        wire [31:0] mux11_data_0;
+        wire [31:0] mux11_data_1;
+
     // mux 12
          
         wire [2:0] mux12_s;
@@ -94,13 +92,14 @@ module cpu1 (
         // controle
         wire [2:0] mux13_s;
         wire [31:0] mux13_data_2;
-        wire [31:0] mux13_data_3;
-        wire [31:0] mux13_data_4;
+        
+    // mux 14
+        // controle
+        wire [2:0] mux14_s;
+        wire [31:0] mux14_data_0;
+        wire [31:0] mux14_data_1;
 
     // unused
-        wire hi_out_s;
-        wire lo_out_s;
-        wire EPC_w;
         wire load_dec_w;
         wire reg_des_shift;
     
@@ -128,6 +127,18 @@ module cpu1 (
         wire temp_b_s;        
         wire [31:0] temp_a_out;
         wire [31:0] temp_b_out;
+
+    // low e high out
+
+        wire hi_out_s;
+        wire lo_out_s;        
+        wire [31:0] hi_out_out;
+        wire [31:0] lo_out_out;
+
+    //Epc
+
+        wire EPC_w;
+        wire [31:0] EPC_out;
 
     // ir
         // controle 
@@ -206,8 +217,8 @@ module cpu1 (
         mux1_data_2,
         mux1_data_3,
         mux1_data_4,
-        mux1_data_5,
-        mux1_data_6,
+        out_a,
+        out_b,
         out_mux1
     );
 
@@ -223,8 +234,8 @@ module cpu1 (
         mux3_s,
         mux3_data_0,
         ALUOut_out,
-        mux3_data_2,
-        mux3_data_3,
+        hi_out_out,
+        lo_out_out,
         out_mux12,
         sh_out,
         sign_extended7,
@@ -288,6 +299,13 @@ module cpu1 (
         memoria_in
     );
 
+    mux11_2 mux11(
+        mux11_s,
+        mux11_data_0,
+        mux11_data_1,
+        out_mux11
+    );
+
     mux12_2 mux12(
         mux12_s,
         sign_extended3,
@@ -300,9 +318,16 @@ module cpu1 (
         S,
         ALUOut_out,
         mux13_data_2,
-        mux13_data_3,
+        EPC_out,
         sign_extended6,
         PC_in
+    );
+
+    mux14_2 mux14(
+        mux14_s,
+        mux14_data_0,
+        mux14_data_1,
+        out_mux14
     );
 
     SB sb(
@@ -325,12 +350,28 @@ module cpu1 (
         memoria_out
     );
 
-    Registrador mem_d_s(
+    Registrador mem_d_r(
         clk,
         reset,
         mdr_w,
         memoria_out,
         mdr_out
+    );
+
+    Registrador hi_out(
+        clk,
+        reset,
+        hi_out_s,
+        out_mux11,
+        hi_out_out
+    );
+
+    Registrador lo_out(
+        clk,
+        reset,
+        lo_out_s,
+        out_mux14,
+        lo_out_out
     );
 
     Registrador temp_a(
@@ -347,6 +388,14 @@ module cpu1 (
         temp_b_s,
         mdr_out,
         temp_b_out
+    );
+
+    Registrador epc(
+        clk,
+        reset,
+        EPC_w,
+        ALUOut_out,
+        EPC_out
     );
 
 
@@ -477,8 +526,10 @@ module cpu1 (
         mux8_s,
         mux9_s,
         mux10_s,
+        mux11_s,
         mux12_s,
         mux13_s,
+        mux14_s,
         temp_a_s,
         temp_b_s,
         hi_out_s,

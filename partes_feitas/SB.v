@@ -4,6 +4,6 @@ module SB (
     output reg [31:0] sb_out
 );
 
-assign sb_out = {mdr_in, rt_in};
+    assign sb_out = {mdr_in, rt_in};
 
 endmodule

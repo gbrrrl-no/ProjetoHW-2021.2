@@ -4,6 +4,6 @@ module SH(
     output reg [31:0] sh_out
 );
 
-assign sh_out = {mdr_in, rt_in};
+    assign sh_out = {mdr_in, rt_in};
 
 endmodule
