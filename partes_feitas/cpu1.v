@@ -100,7 +100,6 @@ module cpu1 (
         wire [31:0] mux14_data_1;
 
     // unused
-        wire load_dec_w;
         wire reg_des_shift;
     
     // Sh e Sb
@@ -202,6 +201,11 @@ module cpu1 (
         wire Maior;
         wire Menor;
 
+    // load decider
+        wire [1:0] load_des_s;
+        wire [31:0] load_decider_out;
+
+
     Registrador PC_(
         clk,
         reset,
@@ -232,7 +236,7 @@ module cpu1 (
 
     mux3_8 mux3(
         mux3_s,
-        mux3_data_0,
+        load_decider_out,
         ALUOut_out,
         hi_out_out,
         lo_out_out,
@@ -356,6 +360,13 @@ module cpu1 (
         mdr_w,
         memoria_out,
         mdr_out
+    );
+
+    load_decider load_des(
+        clk,
+        load_des_s,
+        mdr_out,
+        load_decider_out
     );
 
     Registrador hi_out(
@@ -536,7 +547,7 @@ module cpu1 (
         lo_out_s,
         EPC_w,
         mdr_w,
-        load_dec_w,
+        load_des_s,
         reg_des_shift,
         ALUOut_w,
         reg_w,
