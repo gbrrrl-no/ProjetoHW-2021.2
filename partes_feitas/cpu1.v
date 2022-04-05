@@ -510,6 +510,13 @@ module cpu1 (
         ALUOut_out
     );
 
+    mult Multiplicador(
+        clk,
+        reset,
+        out_mux6,
+        out_b
+    );
+
     ctrl_unit CTRL_(
         clk,
         reset,
