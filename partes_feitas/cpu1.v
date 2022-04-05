@@ -65,7 +65,7 @@ module cpu1 (
         // controle
         wire [2:0] mux8_s;
         // saida
-        wire [4:0] out_mux8;
+        wire [4:0] N;
 
     // mux 9
         // controle
@@ -159,6 +159,10 @@ module cpu1 (
         wire reg_w;
         wire ALUOut_w;
 
+    // Registror de deslocamento
+
+        wire [31:0] r_desloc_out
+
     // Reg A 
         // controle
         wire a_w;
@@ -241,7 +245,7 @@ module cpu1 (
         hi_out_out,
         lo_out_out,
         out_mux12,
-        sh_out,
+        r_desloc_out,
         sign_extended7,
         write_data
     );
@@ -282,7 +286,7 @@ module cpu1 (
         out_b[4:0],
         address[10:6],
         mdr_out[4:0],
-        out_mux8
+        N
     );
 
     mux9_3 mux9(
@@ -500,6 +504,15 @@ module cpu1 (
         Igual,
         Maior,
         Menor
+    );
+
+    RegDesloc r_desloc(
+        clk,
+        reset,
+        reg_des_shift,
+        N,
+        out_mux9,
+        r_desloc_out
     );
 
     Registrador ALUOut(
