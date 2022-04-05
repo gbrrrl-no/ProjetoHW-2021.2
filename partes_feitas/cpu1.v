@@ -82,6 +82,7 @@ module cpu1 (
         wire [2:0] mux11_s;
         wire [31:0] mux11_data_0;
         wire [31:0] mux11_data_1;
+        wire [31:0] out_mux11;
 
     // mux 12
          
@@ -92,6 +93,7 @@ module cpu1 (
         // controle
         wire [2:0] mux13_s;
         wire [31:0] mux13_data_2;
+        wire [31:0] out_mux14;
         
     // mux 14
         // controle
@@ -100,7 +102,7 @@ module cpu1 (
         wire [31:0] mux14_data_1;
 
     // unused
-        wire reg_des_shift;
+        wire [2:0] reg_des_shift;
     
     // Sh e Sb
        
@@ -161,7 +163,7 @@ module cpu1 (
 
     // Registror de deslocamento
 
-        wire [31:0] r_desloc_out
+        wire [31:0] r_desloc_out;
 
     // Reg A 
         // controle
@@ -208,6 +210,10 @@ module cpu1 (
     // load decider
         wire [1:0] load_des_s;
         wire [31:0] load_decider_out;
+
+    //registrador de deslocamento
+        wire [31:0] address_extended;
+
 
 
     Registrador PC_(
@@ -320,6 +326,14 @@ module cpu1 (
         sign_extended5,
         out_mux12
     );
+
+    wire [24:0] sf2_25_out;
+    shift_left2_25 sf2_25(
+        {rs,rt,address},
+        sf2_25_out
+    );
+
+    assign mux13_data_2 = {PC_out[31:28],sf2_25_out};
 
     mux13_5 mux13(
         mux13_s,

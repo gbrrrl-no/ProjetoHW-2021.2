@@ -61,20 +61,50 @@ reg [5:0] state;
 
 // parameters
     // main states
-    parameter st_common = 2'b00;
-    parameter st_reset = 2'b11;
+    parameter st_common = 16'b00;
+    parameter st_reset = 16'b11;
 
     // opcode aliases
-    parameter AND = 6'b000000;
-    parameter RESET = 6'b000001;
-    parameter ADD = 6'b000000;
+    parameter addi   = 6'h8;
+    parameter addiu  = 6'h9;
+    parameter beq    = 6'h4;
+    parameter bne    = 6'h5;
+    parameter ble    = 6'h6;
+    parameter bgt    = 6'h7;
+    parameter sllm   = 6'h01;
+    parameter lb     = 6'h20;
+    parameter lh     = 6'h21;
+    parameter lui    = 6'h0F;
+    parameter lw     = 6'h23;
+    parameter sb     = 6'h28;
+    parameter sh     = 6'h29;
+    parameter slti   = 6'h0X;
+    parameter sw     = 6'h2B;
 
-    //funct aliases
-    parameter fct_and = 6'b011000;
-    parameter fct_add = 6'b100000;
-    parameter fct_over_f = 6'b000000;
+    parameter st_j   = 6'h02;
+    parameter jal    = 6'h03;
+    parameter RESET = 6'h11;//QUEM SABE ESSE VALOR?
 
-
+    //funct aliases 17
+    parameter fct_over_f = 6'b111111;//deve ser mudado
+    parameter fct_add   = 6'h20;
+    parameter fct_and   = 6'h24;
+    parameter fct_div   = 6'h1A; 
+    parameter fct_mult  = 6'h18;
+    parameter fct_jr    = 6'h08;
+    parameter fct_mfhi  = 6'h10;
+    parameter fct_mflo  = 6'h12;
+    parameter fct_sll   = 6'h00;//zero
+    parameter fct_sllv  = 6'h04;
+    parameter fct_slt   = 6'h2A;
+    parameter fct_sra   = 6'h03;
+    parameter fct_srav  = 6'h07;
+    parameter fct_srl   = 6'h02;
+    parameter fct_sub   = 6'h22;
+    parameter fct_break = 6'h0D;
+    parameter fct_Rte   = 6'h13;
+    parameter fct_addm  = 6'h05;     
+    
 initial begin
     reset_out = 1'b1;
 end
@@ -384,12 +414,18 @@ always @(posedge clk) begin
                         RESET: begin
                             state = st_reset;
                         end
+                        st_j:begin
+                            state = st_j;
+                        end
+                        6'h2:begin
+                            state = st_j;
+                        end
                         6'b000000: begin
                             case (funct)
                                 fct_and: begin
                                     state = fct_and;
                                 end
-                                ADD: begin
+                                fct_add: begin
                                     state = fct_add;
                                 end
                             endcase
@@ -737,6 +773,83 @@ always @(posedge clk) begin
                     PC_w = 1'b0;
 
                     counter = 4'b0000;   
+                end
+            end
+            //================= J =========================
+            st_j: begin
+                if (counter == 4'b0000)begin
+                    state = st_j;
+                    
+                    PC_w = 1'b1; ///
+                    memoria_w = 1'b0;
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0;
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b011;
+                    reset_out = 1'b0; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001; 
+                    mux5_s = 3'b000; 
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b010;///
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
+
+                    counter = counter + 1; 
+                end
+                if (counter == 4'b0001) begin
+                    state = st_common;
+                    
+                    PC_w = 1'b1; 
+                    memoria_w = 1'b0;
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0;
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b011;
+                    reset_out = 1'b0; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001; 
+                    mux5_s = 3'b000; 
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b010; ///
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 1'b0;
+                    reg_des_shift = 1'b0;
+
+                    counter = 6'b000000; 
                 end
             end
             //================= reset =====================
