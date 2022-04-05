@@ -1,4 +1,4 @@
-module mux6_2 (
+module mux7_2 (
     input wire [2:0] selector,
     input wire [31:0] data_0,
     input wire [31:0] data_1,
