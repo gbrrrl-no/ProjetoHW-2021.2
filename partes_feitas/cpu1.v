@@ -136,6 +136,11 @@ module cpu1 (
         wire [31:0] hi_out_out;
         wire [31:0] lo_out_out;
 
+    // mult e div
+
+        wire start_mult;
+        wire stop_mult;        
+
     //Epc
 
         wire EPC_w;
@@ -537,6 +542,17 @@ module cpu1 (
         ALUOut_out
     );
 
+    mult Multiplicador(
+        clk,
+        reset,
+        out_mux6,
+        out_b,
+        start_mult,
+        stop_mult,
+        mux11_data_0,
+        mux14_data_0
+    );
+
     ctrl_unit CTRL_(
         clk,
         reset,
@@ -546,6 +562,7 @@ module cpu1 (
         Igual,
         Maior,
         Menor,
+        stop_mult,
         address[5:0],
         opcode,
         PC_w,
@@ -572,6 +589,7 @@ module cpu1 (
         temp_b_s,
         hi_out_s,
         lo_out_s,
+        start_mult,
         EPC_w,
         mdr_w,
         load_des_s,
