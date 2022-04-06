@@ -87,6 +87,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	shift_left2
 
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mux5_5
+
+Top level modules:
+	mux5_5
+
 } {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module SH
@@ -94,12 +101,19 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	SH
 
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/div.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/div.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux5_5
+-- Compiling module div
 
 Top level modules:
-	mux5_5
+	div
+
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mux3_8
+
+Top level modules:
+	mux3_8
 
 } {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -109,12 +123,12 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Registrador
 -- Compiling architecture behavioral_arch of Registrador
 
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux3_8
+-- Compiling module mux9_3
 
 Top level modules:
-	mux3_8
+	mux9_3
 
 } {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -122,13 +136,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 
 Top level modules:
 	mux8_4
-
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux9_3
-
-Top level modules:
-	mux9_3
 
 } {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -158,7 +165,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	cpu1
 
-} {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd}
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mult.v {0 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mult.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mult
+** Error: C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mult.v(26): (vlog-2110) Illegal reference to net "stop_operation".
+** Error: C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mult.v(33): (vlog-2110) Illegal reference to net "start_operation".
+** Error: C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mult.v(56): (vlog-2110) Illegal reference to net "stop_operation".
+
+} {4.0 7.0} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -173,6 +187,20 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	ctrl_unit
 
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mux11_2
+
+Top level modules:
+	mux11_2
+
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module SB
+
+Top level modules:
+	SB
+
 } {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
@@ -182,28 +210,12 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Ula32
 -- Compiling architecture behavioral of Ula32
 
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module SB
+-- Compiling module mux12_2
 
 Top level modules:
-	SB
-
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux11_2
-
-Top level modules:
-	mux11_2
-
-} {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity RegDesloc
--- Compiling architecture behavioral_arch of RegDesloc
+	mux12_2
 
 } {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -214,11 +226,13 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Banco_reg
 -- Compiling architecture behavioral_arch of Banco_reg
 
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux12_2
-
-Top level modules:
-	mux12_2
+} {} {}} {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity RegDesloc
+-- Compiling architecture behavioral_arch of RegDesloc
 
 } {} {}}

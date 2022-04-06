@@ -47,7 +47,7 @@ module ctrl_unit (
     output reg                start_mult,
     output reg                EPC_w,
     output reg                mem_dr_w,
-    output reg                load_dec_w,
+    output reg                [2:0] load_dec_w,
     output reg                reg_des_shift,
     output reg                ALUOut_w,
     output reg                reg_w,
@@ -147,7 +147,7 @@ always @(posedge clk) begin
             lo_out_s = 1'b0;
             EPC_w = 1'b0;
             mem_dr_w = 1'b0;
-            load_dec_w = 1'b0;
+            load_dec_w = 2'b00;
             reg_des_shift = 1'b0;
             
             counter = 4'b0000;
@@ -183,7 +183,7 @@ always @(posedge clk) begin
             lo_out_s = 1'b0;
             EPC_w = 1'b0;
             mem_dr_w = 1'b0;
-            load_dec_w = 1'b0;
+            load_dec_w = 2'b00;
             reg_des_shift = 1'b0;
                        
             counter = 4'b0000;
@@ -224,7 +224,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;                
@@ -261,7 +261,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -298,7 +298,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -335,7 +335,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -372,7 +372,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -409,7 +409,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -422,23 +422,41 @@ always @(posedge clk) begin
                         st_j:begin
                             state = st_j;
                         end
+                        addi:begin
+                            state = addi;
+                        end
+                        addiu:begin
+                            state = addiu;
+                        end
                         beq:begin
                             state = beq;
-                        end
-                        bne:begin
-                            state = bne;
                         end
                         ble:begin
                             state = ble;
                         end
-                        bgt:begin
-                            state = bgt;
+                        sllm:begin
+                            state = sllm;
+                        end
+                        lb:begin
+                            state = lb;
+                        end
+                        lh:begin
+                            state = lh;
+                        end
+                        lui:begin
+                            state = lui;
+                        end
+                        lw:begin
+                            state = lw;
                         end
                         sb:begin
                             state = sb;
                         end
                         sh:begin
                             state = sh;
+                        end
+                        slti:begin
+                            state = slti;
                         end
                         sw:begin
                             state = sw;
@@ -457,14 +475,14 @@ always @(posedge clk) begin
                             endcase
                         end
                     endcase
-                    PC_w = 1'b0;  //ok
-                    memoria_w = 1'b0; //ok
-                    IR_control = 1'b0; //ok
-                    reg_w = 1'b0; //ok 
-                    a_w = 1'b0; //ok
-                    b_w = 1'b0; //ok
-                    ALUOut_w = 1'b0; //ok
-                    ula_selector = 3'b000; //ok
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b000; 
                     mux1_s = 3'b000;
                     mux2_s = 3'b000;
                     mux3_s = 3'b000;
@@ -479,558 +497,562 @@ always @(posedge clk) begin
                     mux13_s = 3'b000;
                     mux11_s = 3'b000;
                     mux14_s = 3'b000;
-                    reset_out = 1'b0; ///
+                    reset_out = 1'b0; 
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
                     
                     counter = 4'b0000;
                 end
             end
-            //================= and =======================
-            fct_and: begin
-                if (counter == 4'b0000 || counter == 4'b0001 || counter == 4'b0010) begin
-                    state = fct_and;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; ///
-                    ula_selector = 3'b011;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b001; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+            6'b000000: begin//all j instructions
+                case (funct)
+                    //================= and =======================
+                    fct_and: begin
+                        if (counter == 4'b0000 || counter == 4'b0001 || counter == 4'b0010) begin
+                            state = fct_and;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; ///
+                            ula_selector = 3'b011;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
-                end
-                else if (counter == 4'b0011) begin
-                    state = st_common;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b1; ///
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b010; ///
-                    mux3_s = 3'b001; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001;   
+                        end
+                        else if (counter == 4'b0011) begin
+                            state = st_common;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b010; ///
+                            mux3_s = 3'b001; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;   
-                end
-            end
-            //================= add =======================
-            fct_add: begin
-                if (counter == 4'b0000) begin
-                    state = fct_add;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; ///
-                    ula_selector = 3'b001;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b001; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = 4'b0000;   
+                        end
+                    end
+                    //================= add =======================
+                    fct_add: begin
+                        if (counter == 4'b0000) begin
+                            state = fct_add;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; ///
+                            ula_selector = 3'b001;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
-                end
-                else if (counter == 4'b0001 && Overflow) begin
-                    state = fct_over_f;
-                    counter = 4'b0000;
-                end
-                else if (counter == 4'b0001) begin
-                    state = st_common;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b1; ///
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b010; ///
-                    mux3_s = 3'b001; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001;   
+                        end
+                        else if (counter == 4'b0001 && Overflow) begin
+                            state = fct_over_f;
+                            counter = 4'b0000;
+                        end
+                        else if (counter == 4'b0001) begin
+                            state = st_common;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b010; ///
+                            mux3_s = 3'b001; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;   
-                end
-            end
-            //================= overflow ==================
-            fct_over_f: begin
-                if (counter == 4'b0000) begin
-                    state = fct_over_f;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; ///
-                    ula_selector = 3'b010;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b001; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = 4'b0000;   
+                        end
+                    end
+                    //================= overflow ==================
+                    fct_over_f: begin
+                        if (counter == 4'b0000) begin
+                            state = fct_over_f;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; ///
+                            ula_selector = 3'b010;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b001; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
-                end
-                else if (counter == 4'b0001) begin
-                    state = fct_over_f;
-                    
-                    PC_w = 1'b0; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b1; ///
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000; ///
-                    mux3_s = 3'b000; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b1;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001;   
+                        end
+                        else if (counter == 4'b0001) begin
+                            state = fct_over_f;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000; ///
+                            mux3_s = 3'b000; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b1;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
-                end
-                else if (counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
-                    state = fct_over_f;
-                    
-                    PC_w = 1'b1; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b1; ///
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b010;
-                    mux2_s = 3'b000; ///
-                    mux3_s = 3'b000; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001;   
+                        end
+                        else if (counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
+                            state = fct_over_f;
+                            
+                            PC_w = 1'b1; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b010;
+                            mux2_s = 3'b000; ///
+                            mux3_s = 3'b000; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
-                end
-                else if (counter == 4'b0101) begin
-                    state = st_common;
-                     
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b1; ///
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000; ///
-                    mux3_s = 3'b000; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b100;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
-                    PC_w = 1'b0;
+                            counter = counter + 4'b0001;   
+                        end
+                        else if (counter == 4'b0101) begin
+                            state = st_common;
+                            
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000; ///
+                            mux3_s = 3'b000; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b100;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
+                            PC_w = 1'b0;
 
-                    counter = 4'b0000;   
-                end
-            end
-            //================= J =========================
-            st_j: begin
-                if (counter == 4'b0000)begin
-                    state = st_j;
-                    
-                    PC_w = 1'b1; ///
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; 
-                    ula_selector = 3'b011;
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b001; 
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b010;///
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = 4'b0000;   
+                        end
+                    end
+                    //================= J =========================
+                    st_j: begin
+                        if (counter == 4'b0000)begin
+                            state = st_j;
+                            
+                            PC_w = 1'b1; ///
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; 
+                            ula_selector = 3'b011;
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; 
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b010;///
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
-                end
-                else if (counter == 4'b0001) begin
-                    state = st_common;
-                    
-                    PC_w = 1'b1; 
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; 
-                    ula_selector = 3'b011;
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b001; 
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b010; ///
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001; 
+                        end
+                        else if (counter == 4'b0001) begin
+                            state = st_common;
+                            
+                            PC_w = 1'b1; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; 
+                            ula_selector = 3'b011;
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; 
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b010; ///
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = 4'b0000; 
-                end
-            end
-            //================= jal ======================= 
-            st_jal: begin
-                if (counter == 4'b0000)begin
-                    state = st_jal;
-                    
-                    PC_w = 1'b0;
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b1; /// 
-                    ula_selector = 3'b000; ///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b100; ///
-                    mux3_s = 3'b001; ///
-                    mux4_s = 3'b000; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000;
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = 4'b0000; 
+                        end
+                    end
+                    //================= jal ======================= 
+                    st_jal: begin
+                        if (counter == 4'b0000)begin
+                            state = st_jal;
+                            
+                            PC_w = 1'b0;
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; /// 
+                            ula_selector = 3'b000; ///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b100; ///
+                            mux3_s = 3'b001; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
-                end
-                else if (counter == 4'b0001) begin
-                    state = st_jal;
-                    
-                    PC_w = 1'b1; ///
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
-                    ula_selector = 3'b000;
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b100; 
-                    mux3_s = 3'b001; 
-                    mux4_s = 3'b000; 
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b010; ///
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001; 
+                        end
+                        else if (counter == 4'b0001) begin
+                            state = st_jal;
+                            
+                            PC_w = 1'b1; ///
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b100; 
+                            mux3_s = 3'b001; 
+                            mux4_s = 3'b000; 
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b010; ///
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
-                end
-                else if (counter == 4'b0010) begin
-                    state = st_common;
-                    
-                    PC_w = 1'b0; ///
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; 
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; 
-                    ula_selector = 3'b000;
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b100; 
-                    mux3_s = 3'b001; 
-                    mux4_s = 3'b000; 
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b010; 
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            counter = counter + 4'b0001; 
+                        end
+                        else if (counter == 4'b0010) begin
+                            state = st_common;
+                            
+                            PC_w = 1'b0; ///
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; 
+                            ula_selector = 3'b000;
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b100; 
+                            mux3_s = 3'b001; 
+                            mux4_s = 3'b000; 
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b010; 
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = 4'b0000; 
-                end
-            end
-            //================= jr ========================
-            fct_jr: begin
-                if (counter == 4'b0000) begin
-                    state = st_common;
+                            counter = 4'b0000; 
+                        end
+                    end
+                    //================= jr ========================
+                    fct_jr: begin
+                        if (counter == 4'b0000) begin
+                            state = st_common;
 
-                    PC_w = 1'b1; ///
-                    memoria_w = 1'b0;
-                    IR_control = 1'b0; 
-                    reg_w = 1'b0;
-                    a_w = 1'b0; ///
-                    b_w = 1'b0; 
-                    ALUOut_w = 1'b0; 
-                    ula_selector = 3'b000; ///
-                    reset_out = 1'b0; 
-                    mux1_s = 3'b000;
-                    mux2_s = 3'b000;
-                    mux3_s = 3'b000;
-                    mux4_s = 3'b001; ///
-                    mux5_s = 3'b000; 
-                    mux6_s = 3'b000;
-                    mux7_s = 3'b000;
-                    mux8_s = 3'b000;
-                    mux9_s = 3'b000;
-                    mux10_s = 3'b000;
-                    mux12_s = 3'b000;
-                    mux13_s = 3'b000; ///
-                    mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
-                    temp_a_s = 1'b0;
-                    temp_b_s = 1'b0;
-                    hi_out_s = 1'b0;
-                    lo_out_s = 1'b0;
-                    EPC_w = 1'b0;
-                    mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
-                    reg_des_shift = 1'b0;
+                            PC_w = 1'b1; ///
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; ///
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; 
+                            ula_selector = 3'b000; ///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000; ///
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;
-                end
+                            counter = 4'b0000;
+                        end
+                    end
+                endcase
             end
             //================= beq =======================
             beq: begin
@@ -1066,7 +1088,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1103,7 +1125,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1140,7 +1162,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1177,7 +1199,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;
@@ -1221,7 +1243,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1258,7 +1280,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1295,7 +1317,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1332,7 +1354,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;
@@ -1376,7 +1398,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1413,7 +1435,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1450,7 +1472,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1487,7 +1509,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;
@@ -1531,7 +1553,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1568,7 +1590,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1605,7 +1627,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001; 
@@ -1642,7 +1664,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;
@@ -1686,7 +1708,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -1723,7 +1745,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;  
@@ -1760,7 +1782,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -1797,7 +1819,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -1834,7 +1856,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -1871,7 +1893,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;    
@@ -1911,7 +1933,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -1948,7 +1970,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;  
@@ -1985,7 +2007,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -2022,7 +2044,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -2059,7 +2081,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;    
@@ -2096,7 +2118,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;    
@@ -2136,7 +2158,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;
@@ -2173,7 +2195,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -2210,7 +2232,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;   
@@ -2247,7 +2269,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;
@@ -2284,7 +2306,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;
@@ -2321,10 +2343,685 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = counter + 4'b0001;
+                end
+            end
+            //================= lb ========================
+            lb: begin
+                if (counter == 4'b0000 || counter == 4'b0001) begin
+                    state = lb;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b000; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0010) begin
+                    state = lb;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0011)begin 
+                    state = lb;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                    state = lb;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0110) begin
+                    state = lb;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0111) begin
+                    state = st_common;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = 4'b0000;
+                end
+            end
+            //================= lh ========================
+            lh: begin
+                if (counter == 4'b0000 || counter == 4'b0001) begin
+                    state = lh;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b000; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0010) begin
+                    state = lh;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0011)begin 
+                    state = lh;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                    state = lh;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0110) begin
+                    state = lh;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0111) begin
+                    state = st_common;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b01;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = 4'b0000;
+                end
+            end
+            //================= lw ========================
+            lw: begin
+                if (counter == 4'b0000 || counter == 4'b0001) begin
+                    state = lw;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b000; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0010) begin
+                    state = lw;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0011)begin 
+                    state = lw;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                    state = lw;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b0; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b000;
+                    mux5_s = 3'b000;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b1;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0110) begin
+                    state = lw;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = counter + 1;
+                end
+                else if (counter == 4'b0111) begin
+                    state = st_common;
+
+                    PC_w = 1'b0;  
+                    memoria_w = 1'b0; 
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; 
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b001; 
+                    mux1_s = 3'b001;
+                    mux2_s = 3'b001;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001;
+                    mux5_s = 3'b010;
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b000;
+                    mux9_s = 3'b000;
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;
+                    reset_out = 1'b0; 
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b10;
+                    reg_des_shift = 1'b0;
+                    
+                    counter = 4'b0000;
                 end
             end
             //================= reset =====================
@@ -2361,7 +3058,7 @@ always @(posedge clk) begin
                     lo_out_s = 1'b0;
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
-                    load_dec_w = 1'b0;
+                    load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
                     counter = 4'b0000;   
