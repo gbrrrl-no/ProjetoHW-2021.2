@@ -6,7 +6,7 @@ module mux2_5 (
     output reg [4:0] data_out
 );
 
-    always @(selector) begin
+    always @(selector or data_0 or data_1 or data_2) begin
         case(selector)
             3'b000: data_out = data_0;
             3'b001: data_out = data_1;

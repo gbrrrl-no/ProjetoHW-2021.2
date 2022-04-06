@@ -508,7 +508,7 @@ module cpu1 (
     );
 
     shift_left2 sl2(
-        address_extended,
+        sign_extended1,
         address_shifited
     );
 

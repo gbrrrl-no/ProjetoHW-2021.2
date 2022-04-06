@@ -15,7 +15,7 @@ Z0 w1649007689
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 488
+!i122 2127
 Z4 dC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2
 Z5 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd
 Z6 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd
@@ -25,9 +25,9 @@ V:adHbk0Ym0TAKYW83J5Y[3
 !s100 hZ46CT_BzQl8j]02_Vf=o2
 Z7 OV;C;2020.1;71
 32
-Z8 !s110 1649175654
+Z8 !s110 1649246727
 !i10b 1
-Z9 !s108 1649175654.000000
+Z9 !s108 1649246727.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd|
 Z11 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Banco_reg.vhd|
 !i113 1
@@ -38,7 +38,7 @@ R1
 R2
 R3
 DEx4 work 9 banco_reg 0 22 :adHbk0Ym0TAKYW83J5Y[3
-!i122 488
+!i122 2127
 l93
 L85 34
 VY7l=BkTbhRVIWWGL4mMo60
@@ -54,59 +54,59 @@ R11
 R12
 R13
 vcpu1
-Z14 !s110 1649175655
+!s110 1649246731
 !i10b 1
-!s100 X5:HiGSPAA2U3GoWamDS51
-Z15 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IkY?_YzKzHiHo03YhK;U8>0
-Z16 VDg1SIo80bB@j0V0VzS_@n1
+!s100 Q_41>T7HT7bc8Rc7:dWZ@0
+Z14 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IBF9h57L6PN7lbH:_S0EzC3
+Z15 VDg1SIo80bB@j0V0VzS_@n1
 R4
-w1649175651
+w1649202145
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/cpu1.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/cpu1.v
-!i122 494
+!i122 2133
 L0 1 584
-Z17 OV;L;2020.1;71
+Z16 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z18 !s108 1649175655.000000
+!s108 1649246730.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/cpu1.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/cpu1.v|
 !i113 1
-Z19 o-work work
-Z20 tCvgOpt 0
+Z17 o-work work
+Z18 tCvgOpt 0
 vctrl_unit
-Z21 !s110 1649175656
+Z19 !s110 1649246732
 !i10b 1
-!s100 7K?]ZVQHRBYTHl6GlI>a[0
+!s100 <EBkjA[JUjhgkYLkibl>>3
+R14
+IJ^SV7_Abekjk3QmXQ3E6o2
 R15
-IlP;oQcD<<oV]TMSSdeXB12
-R16
 R4
-w1649175119
+w1649246707
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/ctrl_unit.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/ctrl_unit.v
-!i122 495
-L0 1 899
-R17
+!i122 2134
+L0 1 1519
+R16
 r1
 !s85 0
 31
-R18
+!s108 1649246731.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/ctrl_unit.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/ctrl_unit.v|
 !i113 1
-R19
-R20
+R17
+R18
 Einstr_reg
 R0
 R2
 R3
-!i122 489
+!i122 2128
 R4
-Z22 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd
-Z23 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd
+Z20 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd
+Z21 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd
 l0
 L42 1
 VAfV1kYS402dnLRiFO;Z7_2
@@ -116,8 +116,8 @@ R7
 R8
 !i10b 1
 R9
-Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd|
-Z25 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd|
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd|
+Z23 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Instr_Reg.vhd|
 !i113 1
 R12
 R13
@@ -125,430 +125,430 @@ Abehavioral_arch
 R2
 R3
 DEx4 work 9 instr_reg 0 22 AfV1kYS402dnLRiFO;Z7_2
-!i122 489
+!i122 2128
 l59
 L56 32
 VTD836jU:>9m^d?0ed1C0O3
 !s100 _AcjR?n;fJneQZzaIjJFa3
 R7
 32
-R14
+R8
 !i10b 1
 R9
-R24
-R25
+R22
+R23
 !i113 1
 R12
 R13
 vload_decider
-R21
+R19
 !i10b 1
 !s100 V@R_aQHC=^[=dc`0dUB?20
-R15
+R14
 I3FXf`V77i;3bfBZm>X6?S2
-R16
+R15
 R4
 w1649172172
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/load_decider.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/load_decider.v
-!i122 496
+!i122 2135
 L0 1 14
-R17
+R16
 r1
 !s85 0
 31
-Z26 !s108 1649175656.000000
+Z24 !s108 1649246732.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/load_decider.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/load_decider.v|
 !i113 1
-R19
-R20
+R17
+R18
 Ememoria
 R0
-Z27 DPx4 work 13 ram_constants 0 22 BbIcggj=<H_W75Jb?WIoZ0
-Z28 DPx3 lpm 14 lpm_components 0 22 jlWe>e^2@cAI7EQaRX2E;1
+Z25 DPx4 work 13 ram_constants 0 22 BbIcggj=<H_W75Jb?WIoZ0
+Z26 DPx3 lpm 14 lpm_components 0 22 jlWe>e^2@cAI7EQaRX2E;1
 R1
 R2
 R3
-!i122 490
+!i122 2129
 R4
-Z29 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd
-Z30 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd
+Z27 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd
+Z28 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd
 l0
 L67 1
 V<[RFRXeHV^PMOiiinkBoS0
 !s100 __XEo>II7SFLX6Xa7VZA63
 R7
 32
-R14
+Z29 !s110 1649246728
 !i10b 1
-R18
-Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd|
-Z32 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd|
+R9
+Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd|
+Z31 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Memoria.vhd|
 !i113 1
 R12
 R13
 Abehavioral_arch
-R27
-R28
+R25
+R26
 R1
 R2
 R3
 DEx4 work 7 memoria 0 22 <[RFRXeHV^PMOiiinkBoS0
-!i122 490
+!i122 2129
 l103
 L79 78
 VR9W83dOfA7lWR9j>i6THA2
 !s100 aLo:Seezh^aEQ@MaJf[__3
 R7
 32
-R14
+R29
 !i10b 1
-R18
+R9
+R30
 R31
-R32
 !i113 1
 R12
 R13
 vmux10_5
-Z33 !s110 1649175657
+Z32 !s110 1649246737
 !i10b 1
-!s100 DBiS15:N<KQLkcbJbnjQl1
+!s100 9UA6[eg[gnNgR1aW1I5jT2
+R14
+IH2ED>0X8XUnAe==HB]oLc0
 R15
-I=fYePlG2^[FfA0do5^:QL1
-R16
 R4
-R0
+w1649244905
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux10_5.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux10_5.v
-!i122 506
-Z34 L0 1 22
-R17
+!i122 2145
+Z33 L0 1 22
+R16
 r1
 !s85 0
 31
-Z35 !s108 1649175657.000000
+Z34 !s108 1649246737.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux10_5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux10_5.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux11_2
-R33
+Z35 !s110 1649246738
 !i10b 1
-!s100 LMClcELn^RK8m`l;SToTN1
+!s100 89eHdfoNOR0H3lL9AVFR`0
+R14
+INo0cmlU[7P`4?HzP_FOzA0
 R15
-I5i7:n=NjBAROOT633PdPA0
-R16
 R4
-R0
+w1649244908
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v
-!i122 507
+!i122 2146
 Z36 L0 1 16
-R17
+R16
 r1
 !s85 0
 31
-R35
+R34
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux11_2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux12_2
-R33
+R35
 !i10b 1
-!s100 6bUB0A<:PL;YLTT8zZha72
+!s100 =YWKAWRnei5]Qfd]951=g2
+R14
+IDOXFjIHl=jGg5=Z`:1G9?1
 R15
-I=mXV_Gh[TeXYTQT=6n3@71
-R16
 R4
-R0
+w1649244912
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v
-!i122 508
+!i122 2147
 R36
-R17
+R16
 r1
 !s85 0
 31
-R35
+Z37 !s108 1649246738.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux12_2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux13_5
-Z37 !s110 1649175658
+R35
 !i10b 1
-!s100 zk5F1CfS43ZLTT?_7J:E>2
+!s100 JKKhTIXF@GblT1zEHj?]a3
+R14
+Iz3UjNjUWz:UM^3bHzLT7T0
 R15
-IkY9edeZ2NbPXjS_;ojZR]2
-R16
 R4
-R0
+w1649244921
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v
-!i122 509
-R34
-R17
+!i122 2148
+R33
+R16
 r1
 !s85 0
 31
-R35
+R37
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux14_2
-R37
+Z38 !s110 1649246739
 !i10b 1
-!s100 if[I:1a>0fD5EYPXbI72Z2
+!s100 Pmeemk:Een52j>8C_h?zB1
+R14
+IW4OfnnoR^cfS7izm495D61
 R15
-I6j?iAzYCQzm[R=@kDV81Z2
-R16
 R4
-R0
+w1649244926
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux14_2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux14_2.v
-!i122 510
+!i122 2149
 R36
-R17
+R16
 r1
 !s85 0
 31
-Z38 !s108 1649175658.000000
+R37
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux14_2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux14_2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux1_7
-R21
+R19
 !i10b 1
-!s100 bHLPQa2Yk8[o?;@T3Bz2o3
+!s100 LR<_?Ni<<E_dBE2l^jHKh1
+R14
+I9JaO2J>nfOYN1N1klGVV00
 R15
-I26J?UC3`QVL2K1b?jL0IG0
-R16
 R4
-w1649008343
+w1649244838
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v
-!i122 497
+!i122 2136
 L0 1 26
-R17
+R16
 r1
 !s85 0
 31
-R26
+R24
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux2_5
-R21
+Z39 !s110 1649246733
 !i10b 1
-!s100 hA^mg=86?EMPK51kjnX;z1
+!s100 B4EbR`E=N`8kU2KA>TCe]0
+R14
+I1U;2gXz4=PehN98QLzYSg2
 R15
-I[[VfT;zZV8>XfHdbSIlOS0
-R16
 R4
-R0
+w1649244856
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux2_5.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux2_5.v
-!i122 498
+!i122 2137
 L0 1 20
-R17
+R16
 r1
 !s85 0
 31
-R26
+R24
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux2_5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux2_5.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux3_8
-R21
+R39
 !i10b 1
-!s100 `b8Igj^;PXQ6U=[77QYUG3
+!s100 >e[j7FKM^;[`AJ[C]lO4k0
+R14
+I=dOT5ZlJi0^cED27CARJz3
 R15
-IE4:P_SSP6FU0<PLWdKlHX0
-R16
 R4
-R0
+w1649244866
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v
-!i122 499
+!i122 2138
 L0 1 27
-R17
+R16
 r1
 !s85 0
 31
-R26
+Z40 !s108 1649246733.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux3_8.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux4_3
-R21
+R39
 !i10b 1
-!s100 eoFl6BLUezC]EiI0QIdG21
+!s100 ^dGMF;SOSMXS_JLhSme1[1
+R14
+I9>U`CPKC]B:SW`R=k=]N>2
 R15
-I8743W;XJb`iY[kUV7:=ei0
-R16
 R4
-R0
+w1649244877
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux4_3.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux4_3.v
-!i122 500
-Z39 L0 1 18
-R17
+!i122 2139
+Z41 L0 1 18
+R16
 r1
 !s85 0
 31
-R26
+R40
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux4_3.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux4_3.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux5_5
-R21
+!s110 1649246734
 !i10b 1
-!s100 iC8ASOSe61I;?K?FK[<?c3
+!s100 c;leDQOScY<S9L_KHFH2A2
+R14
+ISh]z486^dd^V?En8J?@Qd1
 R15
-I=?0Lj3mJHz<_VA>Pn@@Kh2
-R16
 R4
-R0
+w1649243841
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v
-!i122 501
+!i122 2140
 L0 1 21
-R17
+R16
 r1
 !s85 0
 31
-R26
+R40
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux5_5.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux6_2
-R33
+Z42 !s110 1649246735
 !i10b 1
-!s100 7iH?j1UQ0IHNN;QEb6WcY2
+!s100 Y5foKARhYSTGeSAPgZn430
+R14
+Ik@DL2`1EAk@G8C69ZJY?h3
 R15
-IG:BkXIhVKon?UKVc3D0N82
-R16
 R4
-R0
+w1649244886
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v
-!i122 502
+!i122 2141
 R36
-R17
+R16
 r1
 !s85 0
 31
-R26
+!s108 1649246734.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux7_2
-R33
+R42
 !i10b 1
-!s100 B8jj5dlz<zLNz]oczKElB2
+!s100 enc4>;I;cI=IkEISTWEno0
+R14
+IReG=gEJa1hDTMMRTMQ`802
 R15
-I0R>IbSSCga`3[Te9gecOH2
-R16
 R4
-w1649172756
+w1649244891
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux7_2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux7_2.v
-!i122 503
+!i122 2142
 R36
-R17
+R16
 r1
 !s85 0
 31
-R35
+!s108 1649246735.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux7_2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux7_2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux8_4
-R33
+!s110 1649246736
 !i10b 1
-!s100 e0m`Hl^MWjLL7V]nOOeKG3
+!s100 hY4h8XAk8ZGSZI<;:cc?m3
+R14
+IbTKJ[Q>glUH8B1S4NeJQd3
 R15
-IKVgV_HhEh8U[F^gGS0>f>1
-R16
 R4
-w1649172917
+w1649244895
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v
-!i122 504
+!i122 2143
 L0 1 19
-R17
+R16
 r1
 !s85 0
 31
-R35
+Z43 !s108 1649246736.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux8_4.v|
 !i113 1
-R19
-R20
+R17
+R18
 vmux9_3
-R33
+R32
 !i10b 1
-!s100 zMJPTQfgZ`O4?<CQWFDCf3
+!s100 6<9K<:ckLGH7HG>QMm;CS3
+R14
+IDRDWiAGLa;<o_fceB:c_k2
 R15
-IJ[?^KRUDQ<XkRad=Sdm>N1
-R16
 R4
-R0
+w1649244899
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v
-!i122 505
-R39
-R17
+!i122 2144
+R41
+R16
 r1
 !s85 0
 31
-R35
+R43
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux9_3.v|
 !i113 1
-R19
-R20
+R17
+R18
 Pram_constants
-!i122 490
+!i122 2129
 R0
 R4
-R29
-R30
+R27
+R28
 l0
 L47 1
 VBbIcggj=<H_W75Jb?WIoZ0
 !s100 5;`Z:D@MR5CT6j_[c9;6h3
 R7
 32
-R14
+R29
 !i10b 1
-R18
+R9
+R30
 R31
-R32
 !i113 1
 R12
 R13
@@ -557,21 +557,21 @@ R0
 R1
 R2
 R3
-!i122 491
+!i122 2130
 R4
-Z40 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd
-Z41 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd
+Z44 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd
+Z45 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd
 l0
 L80 1
 V4GibeROOKf]^CUjTE67Bo0
 !s100 =0ZG0kkZKT?Zo?iX2R9=P1
 R7
 32
-R14
+R29
 !i10b 1
-R18
-Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd|
-Z43 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd|
+Z46 !s108 1649246728.000000
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd|
+Z48 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/RegDesloc.vhd|
 !i113 1
 R12
 R13
@@ -580,18 +580,18 @@ R1
 R2
 R3
 DEx4 work 9 regdesloc 0 22 4GibeROOKf]^CUjTE67Bo0
-!i122 491
+!i122 2130
 l98
 L93 38
 VDFCTADkAb^4XhT09kD<k32
 !s100 3`2HClJO^bJLd6@PodWh?3
 R7
 32
-R14
+R29
 !i10b 1
-R18
-R42
-R43
+R46
+R47
+R48
 !i113 1
 R12
 R13
@@ -599,21 +599,21 @@ Eregistrador
 R0
 R2
 R3
-!i122 492
+!i122 2131
 R4
-Z44 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd
-Z45 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd
+Z49 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd
+Z50 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd
 l0
 L53 1
 VD=`aG^VOPEDP69ifb8G;52
 !s100 ^e8=Z<CbNTLXR@XGZJMQo3
 R7
 32
-R14
+Z51 !s110 1649246729
 !i10b 1
-R18
-Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd|
-Z47 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd|
+R46
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd|
+Z53 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/Registrador.vhd|
 !i113 1
 R12
 R13
@@ -621,207 +621,207 @@ Abehavioral_arch
 R2
 R3
 DEx4 work 11 registrador 0 22 D=`aG^VOPEDP69ifb8G;52
-!i122 492
+!i122 2131
 l66
 L65 19
 V<kVfXRZJUh40ja<<lN_3:3
 !s100 EXKKzlBL1ARAk5TCN4`Vg2
 R7
 32
-R14
+R51
 !i10b 1
-R18
 R46
-R47
+R52
+R53
 !i113 1
 R12
 R13
 vSB
-R37
+R38
 !i10b 1
 !s100 AL9]KmkfMLF_GUG_7MOGJ2
-R15
+R14
 I`WE@B=_`3@h1X?MYOGMYg3
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v
-!i122 511
-Z48 L0 1 9
-R17
+!i122 2150
+Z54 L0 1 9
+R16
 r1
 !s85 0
 31
-R38
+Z55 !s108 1649246739.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SB.v|
 !i113 1
-R19
-R20
+R17
+R18
 n@s@b
 vSH
-R37
+R38
 !i10b 1
 !s100 HG7`ONZc6zMjNUQ8io8[G0
-R15
+R14
 I<ZQ5J49Pj=^5D8>DIj<gH0
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v
-!i122 512
-R48
-R17
+!i122 2151
+R54
+R16
 r1
 !s85 0
 31
-R38
+R55
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/SH.v|
 !i113 1
-R19
-R20
+R17
+R18
 n@s@h
 vshift_left2
-R37
+R38
 !i10b 1
 !s100 gY^T1J<=e_FihZOBK?TCF2
-R15
+R14
 I847o5n6;cX6DnXdhXWiRM2
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2.v
-!i122 513
-Z49 L0 1 8
-R17
+!i122 2152
+Z56 L0 1 8
+R16
 r1
 !s85 0
 31
-R38
+R55
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2.v|
 !i113 1
-R19
-R20
+R17
+R18
 vshift_left2_25
-R37
+Z57 !s110 1649246740
 !i10b 1
 !s100 >=6cYh^G3FXb>zM[8T>Om1
-R15
+R14
 I^>EmBmP]T1LOjBAlmcEkH3
-R16
+R15
 R4
 w1649175337
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2_25.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2_25.v
-!i122 514
-R49
-R17
+!i122 2153
+R56
+R16
 r1
 !s85 0
 31
-R38
+Z58 !s108 1649246740.000000
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2_25.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/shift_left2_25.v|
 !i113 1
-R19
-R20
+R17
+R18
 vSign_extend_1
-R37
+R57
 !i10b 1
 !s100 1Z^Zh[lIXT3ob?P]bB1Y13
-R15
+R14
 IElFTGLJiXF[kI]oh`<R9D1
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_1.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_1.v
-!i122 515
-R49
-R17
+!i122 2154
+R56
+R16
 r1
 !s85 0
 31
-R38
+R58
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_1.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_1.v|
 !i113 1
-R19
-R20
+R17
+R18
 n@sign_extend_1
 vSign_extend_16
-Z50 !s110 1649175659
+!s110 1649246741
 !i10b 1
 !s100 Q71=mdPa^0KYAIR]]<_fZ3
-R15
+R14
 IKH9FSMoBATSF<diH0J3F^1
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v
-!i122 517
-R49
-R17
+!i122 2156
+R56
+R16
 r1
 !s85 0
 31
-!s108 1649175659.000000
+R58
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_16.v|
 !i113 1
-R19
-R20
+R17
+R18
 n@sign_extend_16
 vSign_extend_8
-R50
+R57
 !i10b 1
 !s100 4@aBTTIRA<<zhQWO8LWKM2
-R15
+R14
 IgKA2XkPEl:1knhaC8fY=P2
-R16
+R15
 R4
 R0
 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_8.v
 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_8.v
-!i122 516
-R49
-R17
+!i122 2155
+R56
+R16
 r1
 !s85 0
 31
-R38
+R58
 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_8.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/Sign_extend_8.v|
 !i113 1
-R19
-R20
+R17
+R18
 n@sign_extend_8
 Eula32
 R0
 R1
 R2
 R3
-!i122 493
+!i122 2132
 R4
-Z51 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd
-Z52 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd
+Z59 8C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd
+Z60 FC:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd
 l0
 L63 1
 VM1`EhBco;Cb9<:6CC>b?e2
 !s100 bGmbVJaTC>R`I<lBgn7@L3
 R7
 32
-R14
+Z61 !s110 1649246730
 !i10b 1
-R18
-Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd|
-Z54 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd|
+Z62 !s108 1649246729.000000
+Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd|
+Z64 !s107 C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes dadas/ula32.vhd|
 !i113 1
 R12
 R13
@@ -830,18 +830,18 @@ R1
 R2
 R3
 DEx4 work 5 ula32 0 22 M1`EhBco;Cb9<:6CC>b?e2
-!i122 493
+!i122 2132
 l89
 L79 138
 VF94M;2UJ^55hCen3Z[Kfk0
 !s100 1E>E2KjDKb=5dkES8U2ha0
 R7
 32
-R14
+R61
 !i10b 1
-R18
-R53
-R54
+R62
+R63
+R64
 !i113 1
 R12
 R13
