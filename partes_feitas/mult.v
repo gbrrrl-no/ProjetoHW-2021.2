@@ -5,7 +5,7 @@ module mult (
     input wire [31:0] in_B,
     input wire start_operation,
     
-    output reg stop_operation,
+    output wire stop_operation,
     output reg [31:0] HI,
     output reg [31:0] LO
 );
@@ -33,7 +33,7 @@ always @(posedge clk) begin
             start_operation = 0;
             run_operation = 1;
         end
-        if (run_operation) begin
+        else if (run_operation) begin
             if (counter < 6'b100000) begin
                 temp_A_operator = AQQ_1[64:33];
                 temp_QQ_1_operator = AQQ_1[32:0];
