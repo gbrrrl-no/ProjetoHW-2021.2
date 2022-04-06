@@ -9,6 +9,7 @@ module ctrl_unit (
     input wire                Igual,
     input wire                Maior,
     input wire                Menor,
+    input wire                stop_mult,
 
     // meaningful part of the instruction
     input wire                [5:0] funct,
@@ -43,6 +44,7 @@ module ctrl_unit (
     output reg                temp_b_s,
     output reg                hi_out_s,
     output reg                lo_out_s,
+    output reg                start_mult,
     output reg                EPC_w,
     output reg                mem_dr_w,
     output reg                load_dec_w,
