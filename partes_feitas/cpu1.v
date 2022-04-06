@@ -541,7 +541,9 @@ module cpu1 (
         clk,
         reset,
         out_mux6,
-        out_b
+        out_b,
+        mux11_data_0,
+        mux14_data_0
     );
 
     ctrl_unit CTRL_(
