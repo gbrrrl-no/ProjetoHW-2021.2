@@ -14,9 +14,9 @@ module mux1_7 (
         case(selector)
             3'b000: data_out = data_0;
             3'b001: data_out = data_1;
-            3'b010: data_out = data_2;
-            3'b011: data_out = data_3;
-            3'b100: data_out = data_4;
+            3'b010: data_out = 32'd253;
+            3'b011: data_out = 32'd253;
+            3'b100: data_out = 32'd253;
             3'b101: data_out = data_5;
             3'b101: data_out = data_6;
             default: data_out = data_0;

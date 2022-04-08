@@ -497,8 +497,8 @@ module cpu1 (
         sign_extended5
     );
 
-    Sign_extend_1 se1_1(
-        memoria_out[0],
+    Sign_extend_8 se1_1(
+        memoria_out[7:0],
         sign_extended6
     );
 

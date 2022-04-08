@@ -52,19 +52,19 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Memoria
 -- Compiling architecture behavioral_arch of Memoria
 
-} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module mux6_2
-
-Top level modules:
-	mux6_2
-
 } {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux1_7.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module mux1_7
 
 Top level modules:
 	mux1_7
+
+} {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux6_2.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mux6_2
+
+Top level modules:
+	mux6_2
 
 } {} {}} C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v {1 {vlog -work work -stats=none C:/Users/davim/Desktop/infra-hard/ProjetoHW-2021.2/partes_feitas/mux13_5.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
