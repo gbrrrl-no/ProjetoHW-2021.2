@@ -58,7 +58,7 @@ module ctrl_unit (
 );
 
 // variables
-reg [3:0] counter;
+reg [5:0] counter;
 reg [5:0] state;
 
 // parameters
@@ -154,7 +154,7 @@ always @(posedge clk) begin
             load_dec_w = 2'b00;
             reg_des_shift = 1'b0;
             
-            counter = 4'b0000;
+            counter = 6'b000000;
         end
         else begin
             state = st_common;
@@ -190,13 +190,13 @@ always @(posedge clk) begin
             load_dec_w = 2'b00;
             reg_des_shift = 1'b0;
                        
-            counter = 4'b0000;
+            counter = 6'b000000;
         end
     end
     else begin
         case(state)
             st_common: begin
-                if(counter == 4'b0000 || counter == 4'b0001 || counter == 4'b0010) begin
+                if(counter == 6'b000000 || counter == 6'b000001 || counter == 6'b000010) begin
                     state = st_common;
 
                     PC_w = 1'b0;
@@ -231,9 +231,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;                
+                    counter = counter + 6'b000001;                
                 end
-                else if(counter == 4'b0011) begin
+                else if(counter == 6'b000011) begin
                     state = st_common;
                     
                     PC_w = 1'b0;
@@ -268,9 +268,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end    
-                else if(counter == 4'b0100) begin
+                else if(counter == 6'b000100) begin
                     state = st_common;
                     
                     PC_w = 1'b1; ///
@@ -305,9 +305,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end     
-                else if(counter == 4'b0101) begin
+                else if(counter == 6'b000101) begin
                     state = st_common;
                     
                     PC_w = 1'b0; ///
@@ -342,9 +342,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end   
-                else if(counter == 4'b0110 || counter == 4'b0111 || counter == 4'b1000) begin
+                else if(counter == 6'b000110 || counter == 6'b000111 || counter == 6'b001000) begin
                     state = st_common;
                     
                     PC_w = 1'b0; ///
@@ -379,9 +379,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end  
-                else if(counter == 4'b1001) begin 
+                else if(counter == 6'b001001) begin 
                     state = st_common;
                     
                     PC_w = 1'b0; 
@@ -416,9 +416,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end         
-                else if(counter == 4'b1010) begin
+                else if(counter == 6'b001010) begin
                     case (opcode)
                         st_reset: begin
                             state = st_reset;
@@ -514,14 +514,14 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             6'b000000: begin//all j instructions
                 case (funct)
                     //================= and =======================
                     fct_and: begin
-                        if (counter == 4'b0000 || counter == 4'b0001 || counter == 4'b0010) begin
+                        if (counter == 6'b000000 || counter == 6'b000001 || counter == 6'b000010) begin
                             state = fct_and;
                             
                             PC_w = 1'b0; 
@@ -556,9 +556,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001;   
+                            counter = counter + 6'b000001;   
                         end
-                        else if (counter == 4'b0011) begin
+                        else if (counter == 6'b000011) begin
                             state = st_common;
                             
                             PC_w = 1'b0; 
@@ -593,12 +593,12 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = 4'b0000;   
+                            counter = 6'b000000;   
                         end
                     end
                     //================= add =======================
                     fct_add: begin
-                        if (counter == 4'b0000) begin
+                        if (counter == 6'b000000) begin
                             state = fct_add;
                             
                             PC_w = 1'b0; 
@@ -633,13 +633,13 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001;   
+                            counter = counter + 6'b000001;   
                         end
-                        else if (counter == 4'b0001 && Overflow) begin
+                        else if (counter == 6'b000001 && Overflow) begin
                             state = fct_over_f;
-                            counter = 4'b0000;
+                            counter = 6'b000000;
                         end
-                        else if (counter == 4'b0001) begin
+                        else if (counter == 6'b000001) begin
                             state = st_common;
                             
                             PC_w = 1'b0; 
@@ -674,12 +674,93 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = 4'b0000;   
+                            counter = 6'b000000;   
+                        end
+                    end
+                    //================= mult ======================
+                    fct_mult: begin
+                        if (counter == 6'b000000) begin
+                            state = fct_add;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b0;
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b1; ///
+                            ula_selector = 3'b001;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b000;
+                            mux3_s = 3'b000;
+                            mux4_s = 3'b001; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
+
+                            counter = counter + 6'b000001;   
+                        end
+                        else if (counter == 6'b000001 && Overflow) begin
+                            state = fct_over_f;
+                            counter = 6'b000000;
+                        end
+                        else if (counter == 6'b000001) begin
+                            state = st_common;
+                            
+                            PC_w = 1'b0; 
+                            memoria_w = 1'b0;
+                            IR_control = 1'b0; 
+                            reg_w = 1'b1; ///
+                            a_w = 1'b0; 
+                            b_w = 1'b0; 
+                            ALUOut_w = 1'b0; ///
+                            ula_selector = 3'b000;///
+                            reset_out = 1'b0; 
+                            mux1_s = 3'b000;
+                            mux2_s = 3'b010; ///
+                            mux3_s = 3'b001; ///
+                            mux4_s = 3'b000; ///
+                            mux5_s = 3'b000; 
+                            mux6_s = 3'b000;
+                            mux7_s = 3'b000;
+                            mux8_s = 3'b000;
+                            mux9_s = 3'b000;
+                            mux10_s = 3'b000;
+                            mux12_s = 3'b000;
+                            mux13_s = 3'b000;
+                            mux11_s = 3'b000;
+                            mux14_s = 3'b000;  
+                            temp_a_s = 1'b0;
+                            temp_b_s = 1'b0;
+                            hi_out_s = 1'b0;
+                            lo_out_s = 1'b0;
+                            EPC_w = 1'b0;
+                            mem_dr_w = 1'b0;
+                            load_dec_w = 2'b00;
+                            reg_des_shift = 1'b0;
+
+                            counter = 6'b000000;   
                         end
                     end
                     //================= overflow ==================
                     fct_over_f: begin
-                        if (counter == 4'b0000) begin
+                        if (counter == 6'b000000) begin
                             state = fct_over_f;
                             
                             PC_w = 1'b0; 
@@ -714,9 +795,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001;   
+                            counter = counter + 6'b000001;   
                         end
-                        else if (counter == 4'b0001) begin
+                        else if (counter == 6'b000001) begin
                             state = fct_over_f;
                             
                             PC_w = 1'b0; 
@@ -751,9 +832,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001;   
+                            counter = counter + 6'b000001;   
                         end
-                        else if (counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
+                        else if (counter == 6'b000010 || counter == 6'b000011 || counter == 6'b000100) begin
                             state = fct_over_f;
                             
                             PC_w = 1'b1; 
@@ -788,9 +869,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001;   
+                            counter = counter + 6'b000001;   
                         end
-                        else if (counter == 4'b0101) begin
+                        else if (counter == 6'b000101) begin
                             state = st_common;
                             
                             memoria_w = 1'b0;
@@ -825,12 +906,12 @@ always @(posedge clk) begin
                             reg_des_shift = 1'b0;
                             PC_w = 1'b0;
 
-                            counter = 4'b0000;   
+                            counter = 6'b000000;   
                         end
                     end
                     //================= J =========================
                     st_j: begin
-                        if (counter == 4'b0000)begin
+                        if (counter == 6'b000000)begin
                             state = st_j;
                             
                             PC_w = 1'b1; ///
@@ -865,9 +946,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001; 
+                            counter = counter + 6'b000001; 
                         end
-                        else if (counter == 4'b0001) begin
+                        else if (counter == 6'b000001) begin
                             state = st_common;
                             
                             PC_w = 1'b1; 
@@ -902,12 +983,12 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = 4'b0000; 
+                            counter = 6'b000000; 
                         end
                     end
                     //================= jal ======================= 
                     st_jal: begin
-                        if (counter == 4'b0000)begin
+                        if (counter == 6'b000000)begin
                             state = st_jal;
                             
                             PC_w = 1'b0;
@@ -942,9 +1023,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001; 
+                            counter = counter + 6'b000001; 
                         end
-                        else if (counter == 4'b0001) begin
+                        else if (counter == 6'b000001) begin
                             state = st_jal;
                             
                             PC_w = 1'b1; ///
@@ -979,9 +1060,9 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = counter + 4'b0001; 
+                            counter = counter + 6'b000001; 
                         end
-                        else if (counter == 4'b0010) begin
+                        else if (counter == 6'b000010) begin
                             state = st_common;
                             
                             PC_w = 1'b0; ///
@@ -1016,12 +1097,12 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = 4'b0000; 
+                            counter = 6'b000000; 
                         end
                     end
                     //================= jr ========================
                     fct_jr: begin
-                        if (counter == 4'b0000) begin
+                        if (counter == 6'b000000) begin
                             state = st_common;
 
                             PC_w = 1'b1; ///
@@ -1056,14 +1137,14 @@ always @(posedge clk) begin
                             load_dec_w = 2'b00;
                             reg_des_shift = 1'b0;
 
-                            counter = 4'b0000;
+                            counter = 6'b000000;
                         end
                     end
                 endcase
             end
             //================= beq =======================
             beq: begin
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = beq;
                     
                     PC_w = 1'b1; ///
@@ -1098,9 +1179,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if(counter == 4'b0001 || counter == 4'b0010)begin
+                else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = beq;
                     
                     PC_w = 1'b1; ///
@@ -1135,9 +1216,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0011 && Igual)begin
+                else if (counter == 6'b000011 && Igual)begin
                     state = beq;
                     
                     PC_w = 1'b0; 
@@ -1172,9 +1253,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0100)begin
+                else if (counter == 6'b000100)begin
                     state = st_common;
                     
                     PC_w = 1'b1; ///
@@ -1209,16 +1290,16 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
-                if(counter == 4'b0011 && !Igual) begin
+                if(counter == 6'b000011 && !Igual) begin
                     state = st_common;
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= bne =======================
             bne: begin
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = bne;
                     
                     PC_w = 1'b1; ///
@@ -1253,9 +1334,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if(counter == 4'b0001 || counter == 4'b0010)begin
+                else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = bne;
                     
                     PC_w = 1'b1; ///
@@ -1290,9 +1371,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0011 && !Igual)begin
+                else if (counter == 6'b000011 && !Igual)begin
                     state = bne;
                     
                     PC_w = 1'b0; 
@@ -1327,9 +1408,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0100)begin
+                else if (counter == 6'b000100)begin
                     state = st_common;
                     
                     PC_w = 1'b1; ///
@@ -1364,16 +1445,16 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
-                if(counter == 4'b0011 && !Igual) begin
+                if(counter == 6'b000011 && !Igual) begin
                     state = st_common;
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= ble =======================
             ble: begin
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = ble;
                     
                     PC_w = 1'b1; ///
@@ -1408,9 +1489,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if(counter == 4'b0001 || counter == 4'b0010)begin
+                else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = ble;
                     
                     PC_w = 1'b1; ///
@@ -1445,9 +1526,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0011 && (Igual || Menor)) begin
+                else if (counter == 6'b000011 && (Igual || Menor)) begin
                     state = ble;
                     
                     PC_w = 1'b0; 
@@ -1482,9 +1563,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0100)begin
+                else if (counter == 6'b000100)begin
                     state = st_common;
                     
                     PC_w = 1'b1; ///
@@ -1519,16 +1600,16 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
-                if(counter == 4'b0011 && !Igual) begin
+                if(counter == 6'b000011 && !Igual) begin
                     state = st_common;
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= bgt =======================
             bgt: begin
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = bgt;
                     
                     PC_w = 1'b1; ///
@@ -1563,9 +1644,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if(counter == 4'b0001 || counter == 4'b0010)begin
+                else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = bgt;
                     
                     PC_w = 1'b1; ///
@@ -1600,9 +1681,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0011 && Maior)begin
+                else if (counter == 6'b000011 && Maior)begin
                     state = bgt;
                     
                     PC_w = 1'b0; 
@@ -1637,9 +1718,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001; 
+                    counter = counter + 6'b000001; 
                 end
-                else if (counter == 4'b0100)begin
+                else if (counter == 6'b000100)begin
                     state = st_common;
                     
                     PC_w = 1'b1; ///
@@ -1674,16 +1755,16 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
-                if(counter == 4'b0011 && !Igual) begin
+                if(counter == 6'b000011 && !Igual) begin
                     state = st_common;
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= sb =======================
             sb: begin 
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = sb;
                     
                     PC_w = 1'b0; 
@@ -1718,9 +1799,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = sb;
                     
                     PC_w = 1'b0; 
@@ -1755,9 +1836,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;  
+                    counter = counter + 6'b000001;  
                 end
-                else if (counter == 4'b0011) begin
+                else if (counter == 6'b000011) begin
                     state = sb;
                     
                     PC_w = 1'b0; 
@@ -1792,9 +1873,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b0100 || counter == 4'b0101 || counter == 4'b0110) begin
+                else if (counter == 6'b000100 || counter == 6'b000101 || counter == 6'b000110) begin
                     state = sb;
                     
                     PC_w = 1'b0; 
@@ -1829,9 +1910,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = sb;
                     
                     PC_w = 1'b0; 
@@ -1866,9 +1947,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b1000) begin
+                else if (counter == 6'b001000) begin
                     state = st_common;
                     
                     PC_w = 1'b0; 
@@ -1903,12 +1984,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;    
+                    counter = 6'b000000;    
                 end
             end
             //================= sh ========================
             sh: begin 
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = sh;
                     
                     PC_w = 1'b0; 
@@ -1943,9 +2024,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end
-                else if (counter == 4'b0001) begin
+                else if (counter == 6'b000001) begin
                     state = sh;
                     
                     PC_w = 1'b0; 
@@ -1980,9 +2061,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;  
+                    counter = counter + 6'b000001;  
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = sh;
                     
                     PC_w = 1'b0; 
@@ -2017,9 +2098,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b0011 || counter == 4'b0100 || counter == 4'b0101) begin
+                else if (counter == 6'b000011 || counter == 6'b000100 || counter == 6'b000101) begin
                     state = sh;
                     
                     PC_w = 1'b0; 
@@ -2054,9 +2135,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b0110) begin
+                else if (counter == 6'b000110) begin
                     state = sh;
                     
                     PC_w = 1'b0; 
@@ -2091,9 +2172,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;    
+                    counter = counter + 6'b000001;    
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = st_common;
                     
                     PC_w = 1'b0; 
@@ -2128,12 +2209,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;    
+                    counter = 6'b000000;    
                 end
             end
             //================= sw ========================
             sw: begin 
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = sw;
                     
                     PC_w = 1'b0; 
@@ -2168,9 +2249,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;
+                    counter = counter + 6'b000001;
                 end
-                else if (counter == 4'b0001) begin
+                else if (counter == 6'b000001) begin
                     state = sw;
                     
                     PC_w = 1'b0; 
@@ -2205,9 +2286,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = sw;
                     
                     PC_w = 1'b0; 
@@ -2242,9 +2323,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;   
+                    counter = counter + 6'b000001;   
                 end
-                else if (counter == 4'b0011 || counter == 4'b0100 || counter == 4'b0101) begin
+                else if (counter == 6'b000011 || counter == 6'b000100 || counter == 6'b000101) begin
                     state = sw;
                     
                     PC_w = 1'b0; 
@@ -2279,9 +2360,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;
+                    counter = counter + 6'b000001;
                 end
-                else if (counter == 4'b0110) begin
+                else if (counter == 6'b000110) begin
                     state = sw;
                     
                     PC_w = 1'b0; 
@@ -2316,9 +2397,9 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;
+                    counter = counter + 6'b000001;
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = st_common;
                     
                     PC_w = 1'b0; 
@@ -2353,12 +2434,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = counter + 4'b0001;
+                    counter = counter + 6'b000001;
                 end
             end
             //================= lb ========================
             lb: begin
-                if (counter == 4'b0000 || counter == 4'b0001) begin
+                if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = lb;
 
                     PC_w = 1'b0;  
@@ -2395,7 +2476,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = lb;
 
                     PC_w = 1'b0;  
@@ -2432,7 +2513,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0011)begin 
+                else if (counter == 6'b000011)begin 
                     state = lb;
 
                     PC_w = 1'b0;  
@@ -2469,7 +2550,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                else if(counter == 6'b000100 || counter == 6'b000101)begin
                     state = lb;
 
                     PC_w = 1'b0;  
@@ -2506,7 +2587,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0110) begin
+                else if (counter == 6'b000110) begin
                     state = lb;
 
                     PC_w = 1'b0;  
@@ -2543,7 +2624,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = st_common;
 
                     PC_w = 1'b0;  
@@ -2578,12 +2659,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= lh ========================
             lh: begin
-                if (counter == 4'b0000 || counter == 4'b0001) begin
+                if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = lh;
 
                     PC_w = 1'b0;  
@@ -2620,7 +2701,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = lh;
 
                     PC_w = 1'b0;  
@@ -2657,7 +2738,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0011)begin 
+                else if (counter == 6'b000011)begin 
                     state = lh;
 
                     PC_w = 1'b0;  
@@ -2694,7 +2775,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                else if(counter == 6'b000100 || counter == 6'b000101)begin
                     state = lh;
 
                     PC_w = 1'b0;  
@@ -2731,7 +2812,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0110) begin
+                else if (counter == 6'b000110) begin
                     state = lh;
 
                     PC_w = 1'b0;  
@@ -2768,7 +2849,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = st_common;
 
                     PC_w = 1'b0;  
@@ -2803,12 +2884,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b01;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= lw ========================
             lw: begin
-                if (counter == 4'b0000 || counter == 4'b0001) begin
+                if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = lw;
 
                     PC_w = 1'b0;  
@@ -2845,7 +2926,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0010) begin
+                else if (counter == 6'b000010) begin
                     state = lw;
 
                     PC_w = 1'b0;  
@@ -2882,7 +2963,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0011)begin 
+                else if (counter == 6'b000011)begin 
                     state = lw;
 
                     PC_w = 1'b0;  
@@ -2919,7 +3000,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0100 || counter == 4'b0101)begin
+                else if(counter == 6'b000100 || counter == 6'b000101)begin
                     state = lw;
 
                     PC_w = 1'b0;  
@@ -2956,7 +3037,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0110) begin
+                else if (counter == 6'b000110) begin
                     state = lw;
 
                     PC_w = 1'b0;  
@@ -2993,7 +3074,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if (counter == 4'b0111) begin
+                else if (counter == 6'b000111) begin
                     state = st_common;
 
                     PC_w = 1'b0;  
@@ -3028,12 +3109,12 @@ always @(posedge clk) begin
                     load_dec_w = 2'b10;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             //================= reset =====================
             st_reset: begin 
-                if (counter == 4'b0000) begin
+                if (counter == 6'b000000) begin
                     state = st_common;
                     
                     PC_w = 1'b0; 
@@ -3068,11 +3149,11 @@ always @(posedge clk) begin
                     load_dec_w = 2'b00;
                     reg_des_shift = 1'b0;
 
-                    counter = 4'b0000;   
+                    counter = 6'b000000;   
                 end
             end
             excecao_op_ines:begin
-                if (counter == 4'b0000 || counter == 4'b0001) begin
+                if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b0;  
@@ -3109,7 +3190,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if ( counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
+                else if ( counter == 6'b000010 || counter == 6'b000011 || counter == 6'b000100) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b1;  
@@ -3146,7 +3227,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0101) begin
+                else if(counter == 6'b000101) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b1;  
@@ -3183,7 +3264,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0110) begin
+                else if(counter == 6'b000110) begin
                     state = st_common;
 
                     PC_w = 1'b0;  
@@ -3218,11 +3299,11 @@ always @(posedge clk) begin
                     load_dec_w = 2'b10;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
             excecao_oveflow:begin
-                if (counter == 4'b0000 || counter == 4'b0001) begin
+                if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b0;  
@@ -3259,7 +3340,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if ( counter == 4'b0010 || counter == 4'b0011 || counter == 4'b0100) begin
+                else if ( counter == 6'b000010 || counter == 6'b000011 || counter == 6'b000100) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b1;  
@@ -3296,7 +3377,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0101) begin
+                else if(counter == 6'b000101) begin
                     state = excecao_op_ines;
 
                     PC_w = 1'b1;  
@@ -3333,7 +3414,7 @@ always @(posedge clk) begin
                     
                     counter = counter + 1;
                 end
-                else if(counter == 4'b0110) begin
+                else if(counter == 6'b000110) begin
                     state = st_common;
 
                     PC_w = 1'b0;  
@@ -3368,7 +3449,7 @@ always @(posedge clk) begin
                     load_dec_w = 2'b10;
                     reg_des_shift = 1'b0;
                     
-                    counter = 4'b0000;
+                    counter = 6'b000000;
                 end
             end
         endcase

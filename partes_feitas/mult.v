@@ -59,10 +59,3 @@ always @(posedge clk) begin
     end
 end
 endmodule
-
-//   A      Q   Q-1    M
-// 32'b0  32'bX  0  | 32'bY
-// 32'bY  32'b0  1  | 32'bY
-// A>>>1  32'b1  1  | 32'bY
-
-// 1001 >>> 11001
