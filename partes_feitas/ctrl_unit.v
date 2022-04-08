@@ -84,8 +84,8 @@ reg [5:0] state;
     parameter sw     = 6'h2B;
 
     //instructions type J
-    parameter fct_j   = 6'h02;
-    parameter fct_jal = 6'h03;
+    parameter st_j   = 6'h02;
+    parameter st_jal = 6'h03;
     
     //reset
     parameter RESET  = 6'h11;//QUEM SABE ESSE VALOR?
@@ -423,8 +423,8 @@ always @(posedge clk) begin
                         st_reset: begin
                             state = st_reset;
                         end
-                        fct_j:begin
-                            state = fct_j;
+                        st_j:begin
+                            state = st_j;
                         end
                         addi:begin
                             state = addi;
@@ -523,7 +523,6 @@ always @(posedge clk) begin
                     fct_and: begin
                         if (counter == 6'b000000 || counter == 6'b000001 || counter == 6'b000010) begin
                             state = st_common;
-                            funct = fct_and;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -561,7 +560,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000011) begin
                             state = st_common;
-                            funct = fct_and;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -602,7 +600,6 @@ always @(posedge clk) begin
                     fct_add: begin
                         if (counter == 6'b000000) begin
                             state = st_common;
-                            funct = fct_add;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -640,12 +637,10 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000001 && Overflow) begin
                             state = st_common;
-                            funct = fct_over_f;
                             counter = 6'b000000;
                         end
                         else if (counter == 6'b000001) begin
                             state = st_common;
-                            funct = fct_add;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -686,7 +681,6 @@ always @(posedge clk) begin
                     fct_mult: begin
                         if (counter == 6'b000000) begin
                             state = st_common;
-                            funct = fct_mult;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -724,7 +718,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000001) begin
                             state = st_common;
-                            funct = fct_mult;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -765,7 +758,6 @@ always @(posedge clk) begin
                     fct_over_f: begin
                         if (counter == 6'b000000) begin
                             state = st_common;
-                            funct = fct_over_f;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -803,7 +795,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000001) begin
                             state = st_common;
-                            funct = fct_over_f;
                             
                             PC_w = 1'b0; 
                             memoria_w = 1'b0;
@@ -841,7 +832,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000010 || counter == 6'b000011 || counter == 6'b000100) begin
                             state = st_common;
-                            funct = fct_over_f;
                             
                             PC_w = 1'b1; 
                             memoria_w = 1'b0;
@@ -879,7 +869,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000101) begin
                             state = st_common;
-                            funct = fct_over_f;
                             
                             memoria_w = 1'b0;
                             IR_control = 1'b0; 
@@ -917,10 +906,9 @@ always @(posedge clk) begin
                         end
                     end
                     //================= J =========================
-                    fct_j: begin
+                    st_j: begin
                         if (counter == 6'b000000)begin
                             state = st_common;
-                            funct = fct_j;
                             
                             PC_w = 1'b1; ///
                             memoria_w = 1'b0;
@@ -958,7 +946,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000001) begin
                             state = st_common;
-                            funct = fct_j;
                             
                             PC_w = 1'b1; 
                             memoria_w = 1'b0;
@@ -996,10 +983,9 @@ always @(posedge clk) begin
                         end
                     end
                     //================= jal ======================= 
-                    fct_jal: begin
+                    st_jal: begin
                         if (counter == 6'b000000)begin
                             state = st_common;
-                            funct = fct_jal;
                             
                             PC_w = 1'b0;
                             memoria_w = 1'b0;
@@ -1037,7 +1023,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000001) begin
                             state = st_common;
-                            funct = fct_jal;
                             
                             PC_w = 1'b1; ///
                             memoria_w = 1'b0;
@@ -1075,7 +1060,6 @@ always @(posedge clk) begin
                         end
                         else if (counter == 6'b000010) begin
                             state = st_common;
-                            funct = fct_jal;
                             
                             PC_w = 1'b0; ///
                             memoria_w = 1'b0;
@@ -1116,7 +1100,6 @@ always @(posedge clk) begin
                     fct_jr: begin
                         if (counter == 6'b000000) begin
                             state = st_common;
-                            funct = fct_jr;
 
                             PC_w = 1'b1; ///
                             memoria_w = 1'b0;
