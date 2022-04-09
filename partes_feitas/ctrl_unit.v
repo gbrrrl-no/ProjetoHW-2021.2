@@ -4295,23 +4295,18 @@ always @(posedge clk) begin
             end
             //================= lui =====================
             lui: begin 
-                if (counter == 6'b000000 || counter == 6'b000001) begin
-                    if (counter == 6'b000000) begin
-                        state = lui;
-                    end
-                    else begin
-                        state = st_common;
-                    end
+                if (counter == 6'b000000) begin
+                    state = lui;
 
                     PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
-                    reg_w = 1'b0;
+                    reg_w = 1'b0; ///
                     a_w = 1'b0; 
                     b_w = 1'b0; 
                     ALUOut_w = 1'b0; 
                     ula_selector = 3'b000;
-                    reset_out = 1'b0; ///
+                    reset_out = 1'b0;
                     mux1_s = 3'b000;
                     mux2_s = 3'b001; ///
                     mux3_s = 3'b101; ///
@@ -4319,13 +4314,13 @@ always @(posedge clk) begin
                     mux5_s = 3'b000; 
                     mux6_s = 3'b000;
                     mux7_s = 3'b000;
-                    mux8_s = 3'b001;
-                    mux9_s = 3'b001;
+                    mux8_s = 3'b001; ///
+                    mux9_s = 3'b011; ///
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
                     mux13_s = 3'b000;
                     mux11_s = 3'b000;
-                    mux14_s = 3'b000;
+                    mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
@@ -4333,14 +4328,46 @@ always @(posedge clk) begin
                     EPC_w = 1'b0;
                     mem_dr_w = 1'b0;
                     load_dec_w = 2'b00;
-                    reg_des_shift = 3'b010;
+                    reg_des_shift = 3'b001; ///
+                        
+                    counter = counter + 1;
+                end
+                else if (counter == 6'b000001) begin
+                    state = st_common;
 
-                    if (counter == 6'b000000) begin
-                        counter = counter +1;
-                    end
-                    else begin
-                        counter = 6'b000000;
-                    end  
+                    PC_w = 1'b0; 
+                    memoria_w = 1'b0;
+                    IR_control = 1'b0; 
+                    reg_w = 1'b1; ///
+                    a_w = 1'b0; 
+                    b_w = 1'b0; 
+                    ALUOut_w = 1'b0; 
+                    ula_selector = 3'b000;
+                    reset_out = 1'b0;
+                    mux1_s = 3'b000;
+                    mux2_s = 3'b001; ///
+                    mux3_s = 3'b101; ///
+                    mux4_s = 3'b000; 
+                    mux5_s = 3'b000; 
+                    mux6_s = 3'b000;
+                    mux7_s = 3'b000;
+                    mux8_s = 3'b001; ///
+                    mux9_s = 3'b011; ///
+                    mux10_s = 3'b000;
+                    mux12_s = 3'b000;
+                    mux13_s = 3'b000;
+                    mux11_s = 3'b000;
+                    mux14_s = 3'b000;  
+                    temp_a_s = 1'b0;
+                    temp_b_s = 1'b0;
+                    hi_out_s = 1'b0;
+                    lo_out_s = 1'b0;
+                    EPC_w = 1'b0;
+                    mem_dr_w = 1'b0;
+                    load_dec_w = 2'b00;
+                    reg_des_shift = 3'b001; ///
+                        
+                    counter = 6'b000000;
                 end
             end
             //================= J =========================
@@ -4574,7 +4601,7 @@ always @(posedge clk) begin
                     counter = 6'b000000;   
                 end
             end
-        //================= op_inexistente =====================    
+            //================= op_inexistente =====================    
             excecao_op_ines:begin
                 if (counter == 6'b000000 || counter == 6'b000001) begin
                     state = excecao_op_ines;

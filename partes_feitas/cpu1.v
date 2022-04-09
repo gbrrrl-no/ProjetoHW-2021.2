@@ -199,6 +199,7 @@ module cpu1 (
         // dados
         // saida
         wire [31:0] address_shifited;
+        wire [31:0] out_shift;
 
     // ula
         // controle
@@ -305,6 +306,7 @@ module cpu1 (
         out_a,
         sign_extended1,
         out_b,
+        out_shift,
         out_mux9
     );
     
@@ -510,6 +512,11 @@ module cpu1 (
     shift_left2 sl2(
         sign_extended1,
         address_shifited
+    );
+
+    shift_left16 sl3(
+        sign_extended1,
+        out_shift
     );
 
     ula32 ula(
