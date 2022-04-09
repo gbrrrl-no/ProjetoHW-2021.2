@@ -116,7 +116,7 @@ reg [5:0] state;
 
     // main states
     parameter st_common = 16'b00;
-    parameter st_reset  = 16'b11;
+    parameter st_reset  = 16'b101101;
 
     // state aliases
     parameter addi   = 6'h01;
@@ -520,6 +520,12 @@ always @(posedge clk) begin
                         end
                         opcode_sw:begin
                             state = sw;
+                        end
+                        opcode_bne:begin
+                            state = bne;
+                        end
+                        opcode_bgt:begin
+                            state = bgt;
                         end
                         6'b000000: begin
                             case (funct)
@@ -2211,7 +2217,7 @@ always @(posedge clk) begin
                 if (counter == 6'b000000) begin
                     state = beq;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2248,7 +2254,7 @@ always @(posedge clk) begin
                 else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = beq;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2285,7 +2291,7 @@ always @(posedge clk) begin
                 else if (counter == 6'b000011 && Igual)begin
                     state = beq;
                     
-                    PC_w = 1'b0; 
+                    PC_w = 1'b1; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2366,7 +2372,7 @@ always @(posedge clk) begin
                 if (counter == 6'b000000) begin
                     state = bne;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2403,7 +2409,7 @@ always @(posedge clk) begin
                 else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = bne;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2437,10 +2443,10 @@ always @(posedge clk) begin
 
                     counter = counter + 1; 
                 end
-                else if (counter == 6'b000011 && !Igual)begin
+                else if (counter == 6'b000011 && Igual == 1'b0)begin
                     state = bne;
                     
-                    PC_w = 1'b0; 
+                    PC_w = 1'b1; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2511,7 +2517,7 @@ always @(posedge clk) begin
 
                     counter = 6'b000000;
                 end
-                if(counter == 6'b000011 && !Igual) begin
+                if(counter == 6'b000011 && Igual == 1'b1) begin
                     state = st_common;
                     counter = 6'b000000;
                 end
@@ -2521,7 +2527,7 @@ always @(posedge clk) begin
                 if (counter == 6'b000000) begin
                     state = ble;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2558,7 +2564,7 @@ always @(posedge clk) begin
                 else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = ble;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 0'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2592,10 +2598,10 @@ always @(posedge clk) begin
 
                     counter = counter + 1; 
                 end
-                else if (counter == 6'b000011 && (Igual || Menor)) begin
+                else if (counter == 6'b000011 && Maior == 1'b0) begin
                     state = ble;
                     
-                    PC_w = 1'b0; 
+                    PC_w = 1'b1; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2666,7 +2672,7 @@ always @(posedge clk) begin
 
                     counter = 6'b000000;
                 end
-                if(counter == 6'b000011 && !Igual) begin
+                if(counter == 6'b000011 && Maior == 1'b1) begin
                     state = st_common;
                     counter = 6'b000000;
                 end
@@ -2676,7 +2682,7 @@ always @(posedge clk) begin
                 if (counter == 6'b000000) begin
                     state = bgt;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2713,7 +2719,7 @@ always @(posedge clk) begin
                 else if(counter == 6'b000001 || counter == 6'b000010)begin
                     state = bgt;
                     
-                    PC_w = 1'b1; ///
+                    PC_w = 1'b0; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2747,10 +2753,10 @@ always @(posedge clk) begin
 
                     counter = counter + 1; 
                 end
-                else if (counter == 6'b000011 && Maior)begin
+                else if (counter == 6'b000011 && Maior == 1'b1)begin
                     state = bgt;
                     
-                    PC_w = 1'b0; 
+                    PC_w = 1'b1; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
@@ -2821,7 +2827,7 @@ always @(posedge clk) begin
 
                     counter = 6'b000000;
                 end
-                if(counter == 6'b000011 && !Igual) begin
+                if(counter == 6'b000011 && Maior == 1'b0) begin
                     state = st_common;
                     counter = 6'b000000;
                 end
@@ -4419,19 +4425,19 @@ always @(posedge clk) begin
                 if (counter == 6'b000000)begin
                     state = st_jal;
                     
-                    PC_w = 1'b0;
+                    PC_w = 1'b1; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
-                    reg_w = 1'b0;
+                    reg_w = 1'b0; //
                     a_w = 1'b0; 
                     b_w = 1'b0; 
-                    ALUOut_w = 1'b1; /// 
-                    ula_selector = 3'b000; ///
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b000;
                     reset_out = 1'b0; 
                     mux1_s = 3'b000;
-                    mux2_s = 3'b100; ///
-                    mux3_s = 3'b001; ///
-                    mux4_s = 3'b000; ///
+                    mux2_s = 3'b100; //
+                    mux3_s = 3'b001; //
+                    mux4_s = 3'b000; 
                     mux5_s = 3'b000; 
                     mux6_s = 3'b000;
                     mux7_s = 3'b000;
@@ -4439,7 +4445,7 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b000;
+                    mux13_s = 3'b010;///
                     mux11_s = 3'b000;
                     mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
@@ -4453,21 +4459,21 @@ always @(posedge clk) begin
 
                     counter = counter + 1; 
                 end
-                else if (counter == 6'b000001) begin
+                else if(counter == 6'b000001)begin
                     state = st_jal;
                     
                     PC_w = 1'b1; ///
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
-                    reg_w = 1'b0;
+                    reg_w = 1'b1; //
                     a_w = 1'b0; 
                     b_w = 1'b0; 
-                    ALUOut_w = 1'b0; ///
+                    ALUOut_w = 1'b0; 
                     ula_selector = 3'b000;
                     reset_out = 1'b0; 
                     mux1_s = 3'b000;
-                    mux2_s = 3'b100; 
-                    mux3_s = 3'b001; 
+                    mux2_s = 3'b100; //
+                    mux3_s = 3'b001; //
                     mux4_s = 3'b000; 
                     mux5_s = 3'b000; 
                     mux6_s = 3'b000;
@@ -4476,7 +4482,7 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b010; ///
+                    mux13_s = 3'b010;///
                     mux11_s = 3'b000;
                     mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
@@ -4493,19 +4499,19 @@ always @(posedge clk) begin
                 else if (counter == 6'b000010) begin
                     state = st_common;
                     
-                    PC_w = 1'b0; ///
+                    PC_w = 1'b1; 
                     memoria_w = 1'b0;
                     IR_control = 1'b0; 
                     reg_w = 1'b0;
                     a_w = 1'b0; 
                     b_w = 1'b0; 
-                    ALUOut_w = 1'b0; 
-                    ula_selector = 3'b000;
+                    ALUOut_w = 1'b1; 
+                    ula_selector = 3'b011;
                     reset_out = 1'b0; 
                     mux1_s = 3'b000;
-                    mux2_s = 3'b100; 
-                    mux3_s = 3'b001; 
-                    mux4_s = 3'b000; 
+                    mux2_s = 3'b000;
+                    mux3_s = 3'b000;
+                    mux4_s = 3'b001; 
                     mux5_s = 3'b000; 
                     mux6_s = 3'b000;
                     mux7_s = 3'b000;
@@ -4513,7 +4519,7 @@ always @(posedge clk) begin
                     mux9_s = 3'b000;
                     mux10_s = 3'b000;
                     mux12_s = 3'b000;
-                    mux13_s = 3'b010; 
+                    mux13_s = 3'b010; ///
                     mux11_s = 3'b000;
                     mux14_s = 3'b000;  
                     temp_a_s = 1'b0;
