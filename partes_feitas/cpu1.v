@@ -549,7 +549,7 @@ module cpu1 (
         ALUOut_out
     );
 
-    /*mult Multiplicador(
+    mult Multiplicador(
         clk,
         reset,
         out_mux6,
@@ -558,7 +558,7 @@ module cpu1 (
         stop_mult,
         mux11_data_0,
         mux14_data_0
-    );*/
+    );
 
     ctrl_unit CTRL_(
         clk,
