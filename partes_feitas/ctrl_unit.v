@@ -61,7 +61,7 @@ module ctrl_unit (
 reg [5:0] counter;
 reg [5:0] state;
 
-// // parameters
+// parameters
 
     // opcode aliases
     parameter opcode_addi   = 6'h08;
@@ -4319,7 +4319,7 @@ always @(posedge clk) begin
                     mux12_s = 3'b000;
                     mux13_s = 3'b000;
                     mux11_s = 3'b000;
-                    mux14_s = 3'b000;  
+                    mux14_s = 3'b000;
                     temp_a_s = 1'b0;
                     temp_b_s = 1'b0;
                     hi_out_s = 1'b0;
