@@ -579,7 +579,10 @@ always @(posedge clk) begin
                                 end
                                 funct_addm: begin
                                     state = st_addm;
-                                end 
+                                end
+                                default: begin //excecao
+                                    state = excecao_op_ines;
+                                end
                             endcase
                         end
                         default: begin //excecao
