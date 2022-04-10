@@ -139,7 +139,10 @@ module cpu1 (
     // mult e div
 
         wire start_mult;
-        wire stop_mult;        
+        wire stop_mult;
+        wire start_div;
+        wire stop_div;
+        
 
     //Epc
 
@@ -558,6 +561,17 @@ module cpu1 (
         stop_mult,
         mux11_data_0,
         mux14_data_0
+    );
+
+    div Divisor(
+        clk,
+        reset,
+        out_mux7,
+        out_b,
+        start_div,
+        stop_div,
+        mux11_data_1,
+        mux14_data_1
     );
 
     ctrl_unit CTRL_(

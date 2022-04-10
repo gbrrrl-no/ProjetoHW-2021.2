@@ -10,69 +10,30 @@ module div (
     output reg [31:0] HI,
     output reg [31:0] LO
 );
-    reg [31:0] resto;
-    reg [31:0} divisor;
-    reg [31:0] dividendo;
-    reg [31:0] quociente;
+    reg [31:0] rest;
+    reg [31:0] div;
+    reg [31:0] dividend;
+    reg [31:0] quotient;
+    reg div_zero_erro;
+    reg stop;
 
-    assign HI = resto;
-	assign LO = quociente;
+    assign HI = rest;
+	assign LO = quotient;
 
     always @ (posedge clk) begin
-        if(divZero)begin
-		    erroDivZero = 0;
+        if(div_zero)begin
+		    div_zero_erro = 0;
 	    end
-        else if(divStop)begin
+        else if(stop_operation)begin
 			stop = 0;
 		end
 		else if (reset)begin
-			resto=32'b0;
-			divisor=32'b0;
-			dividendo=32'b0;
-			quociente=32'b0;
-			digitoAtual=5'b0;
-			c=5'b0;
-			fim = 0;
-			divRun = 0;
+			div=32'b0;
+			quotient=32'b0;
+            dividend=32'b0;
+            rest=32'b0;
             stop = 0;
 		end
-        else if(divInit)begin
-            if(divRun)begin
-                if(digitoAtual!=6'b111111)begin//-1
-                    resto = {resto[30:0],dividendo[digitoAtual]};
-                    if(resto>=divisor)begin
-                        resto = resto - divisor;
-                        quociente = {quociente[30:0],1'b1};  
-                    end
-                    else begin
-                        quociente = {quociente[30:0],1'b0};
-                    end
-                    digitoAtual <= digitoAtual-1'b1;
-                    c <= c+1'b1;
-                end
-                else begin
-                    divRun=0;
-                    fim=1;
-                    stop = 1;
-                end
-            end
-            else begin
-                if(fim==0)begin
-                    if(value_B==32'b0 )begin
-			            erroDivZero = 1;
-		            end
-		            else begin
-                        dividendo = value_A;
-                        divisor  = value_B;
-                        digitoAtual = 5'b11111;//31
-                        divRun = 1;
-                    end
-                end
-                else begin
-                    fim = 0;
-                end
-            end
-        end
     end
-endmodule
+
 endmodule
